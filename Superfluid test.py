@@ -17,14 +17,14 @@ s = dist.Field(name='s', bases=(xbasis, ybasis))
 rho = dist.Field(name='rho', bases=(xbasis, ybasis))
 
 #Variables
-xis0 = 1
-xin0 = 1
-xip = 1
-s0 = 1
-u1 = 1
-rho0 = 1
-T0 = 1
-C = 1
+xin0 = 0.4195
+xis0 = 1-xin0
+xip = 5.697*1.e-4
+s0 = 725.5
+u1 = 40
+rho0 = 145.5
+T0 = 1.9
+C = 3902
 
 # Problem
 problem = d3.IVP([v, vs,s,rho], namespace=locals())
@@ -44,7 +44,7 @@ idn['g'][0,0] = 1
 idn['g'][0,1] = 0
 idn['g'][1,0] = 0
 idn['g'][1,1] = 1
-P = u1**2*(rho-rho0)
+P = (u1**2)*(rho-rho0)
 grad_vn = d3.Gradient(vn)
 grad_vnt = d3.TransposeComponents(grad_vn)
 T = T0*(1+(s-s0)/C)
@@ -57,15 +57,19 @@ problem.add_equation('dt(v) = -v@grad(v) -(1/rho)*div(rho*xin*xis*vns*vns + idn*
 problem.add_equation('dt(vs) = -v@grad(vs) +xin*grad_vnt@vns - grad(P)/rho + s*grad(T)')
 
 #Initial value
-rho['g'] = 1.e-2*(np.sin(x) - np.sin(y))
-
+rho['g'] = 1000 + 250*np.sin(x) +250*np.sin(y)
+s['g'] = 1000 + 250*np.sin(x) +250*np.sin(y)
+v['g'][0] = 0
+v['g'][1] = 0
+vs['g'][0] = 0
+vs['g'][1] = 0
 
 #Solver
 solver = problem.build_solver(d3.RK222)
-solver.stop_sim_time = 1
+solver.stop_sim_time = 5*1.e-1
 
 # Main loop
-timestep = 1.e-3
+timestep = 1.e-4
 rho_list = [np.copy(rho['g'])]
 s_list = [np.copy(s['g'])]
 v_list = [np.copy(v['g'])]
@@ -73,7 +77,7 @@ vs_list = [np.copy(vs['g'])]
 t_list = [solver.sim_time]
 while solver.proceed:
     solver.step(timestep)
-    if solver.iteration % 10 == 0:
+    if solver.iteration % 25 == 0:
         rho_list.append(np.copy(rho['g']))
         s_list.append(np.copy(s['g']))
         v_list.append(np.copy(v['g']))
@@ -91,23 +95,34 @@ X, Y = np.meshgrid(x, y)
 
 #Plot
 fig, axs = plt.subplots(1, 4, figsize=(11, 4))
-axs[0].set_title('rho')
-axs[1].set_title('s')
-axs[2].set_title('v')
-axs[3].set_title('vs')
+
 
 def update(n):
-    plt.cla()
-    axs[0].pcolormesh(rho_array[n],  vmin=-1, vmax=1, cmap='RdBu_r')
-    axs[1].pcolormesh(s_array[n],  vmin=-1, vmax=1, cmap='RdBu_r')
+    axs[0].cla()
+    axs[1].cla()
+    axs[2].cla()
+    axs[3].cla()
+    axs[0].set_title('rho')
+    axs[1].set_title('s')
+    axs[2].set_title('v')
+    axs[3].set_title('vs')
+    axs[0].pcolormesh(rho_array[n],  cmap='RdBu_r')
+    axs[1].pcolormesh(s_array[n],   cmap='RdBu_r')
     speed = np.sqrt(v_array[n,0]**2 + v_array[n,1]**2)
     speeds = np.sqrt(vs_array[n,0]**2 + vs_array[n,1]**2)
-    lw = 2*speed / speed.max()
-    lws = 2*speeds / speeds.max()
-    axs[2].streamplot(X, Y, v_array[n,0], v_array[n,1], density=0.3, color='k' , linewidth=lw, broken_streamlines=False)
-    axs[3].streamplot(X, Y, vs_array[n,0], vs_array[n,1], density=0.3, color='k' , linewidth=lws, broken_streamlines=False)
+    if np.max(speed) > 0:
+        lw = speed / np.max(speed)
+    else:
+        lw = speed
+    if np.max(speeds) > 0:
+        lws = speeds / np.max(speeds)
+    else:
+        lws = speeds
+    axs[2].streamplot(X, Y, v_array[n,0], v_array[n,1], density=0.3, color='k' , linewidth=lw, broken_streamlines=True)
+    axs[3].streamplot(X, Y, vs_array[n,0], vs_array[n,1], density=0.3, color='k' , linewidth=lws, broken_streamlines=True)
 
 
-ani = animation.FuncAnimation(fig, update, blit=False, frames=len(s_array), interval = 2, repeat = False )
+ani = animation.FuncAnimation(fig, update, blit=False, frames=len(rho_list), interval = 200, repeat = False )
 plt.show()
-#ani.save(filename="/tmp/pillow_example.gif", writer="pillow")
+
+ani.save(filename="Superfluid.gif", writer="pillow")
