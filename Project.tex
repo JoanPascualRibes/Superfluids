@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{amscd,amssymb,amsmath,latexsym,graphicx,epsfig,color,url}
+\usepackage{todonotes}
 
 \usepackage{graphicx} % Required for inserting images
 
@@ -10,14 +11,16 @@
 
 \newcommand{\Res}{\operatorname{Res}}
 \title{Superfluids}
-\author{Eloi Estèvez, Eki González, Joan Pascual, Timothy David Skipper}
+\author{
+    Eloi Estèvez \and Eki González \and Joan Pascual \and Timothy Skipper
+}
 \date{\today}
 
 \begin{document}
 
 \maketitle
 \begin{abstract}
-    [Write abstract]
+    \todo{Write abstract}
 \end{abstract}
 
 \section{Introduction}
@@ -33,21 +36,20 @@ Navier-Stokes...
 \section{Modelo de Landau}
 
 % Faig alguns apunts random
-The first macroscopic models of superfluid helium-4 were
-proposed by Tisza. His final model consists of four evolution equations,
-namely, the continuity equation, balance of momentum, evolution of superfluid
-velocity, and entropy balance. However, the model has several limitations.
-First, it does not allow for non-zero superfluid vorticity (quantum vortices).
+The first macroscopic models of superfluid helium-4 were proposed by Tisza. His
+final model consists of four evolution equations, namely, the continuity
+equation, balance of momentum, evolution of superfluid velocity, and entropy
+balance. However, the model has several limitations.  First, it does not allow
+for non-zero superfluid vorticity (quantum vortices).
 
 The Landau-Tisza model is formulated in terms of fice quantities (superfluid
 density $\rho_s$, normal density $\rho_n$, superfluid velocity $v_s$, normal
 velocity $v_n$ and entropy density $s$). Since we have more variables than
 equations we set a depencence onf the ratio $\rho_n/\rho$ on temperature. But
 this goes against the nature of superfluid helium-4, which is a single fluid
-with two motions, as expressed by Landau: “It must be particularly stressed
-that we
-have here no real division of the particles of the liquid into `superfluid'
-and `normal' ones….”
+with two motions, as expressed by Landau: ``It must be particularly stressed
+that we have here no real division of the particles of the liquid into
+`superfluid' and `normal' ones\ldots.''
 
 \section{Nuestra simulación}
 Que métodos de resolución de EDPS usamos, que programas, resultados,
