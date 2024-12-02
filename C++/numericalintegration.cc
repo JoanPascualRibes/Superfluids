@@ -1,19 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl "\n"
-#define int long long
 #define vi vector<int>
 #define vb vector<bool>
 #define vd vector<double>
-#define vc vector<char>
 #define db double
-#define si set<int>
 #define pb push_back
 #define vvi vector<vi>
-#define vvb vector<vb>
 #define vvd vector<vd>
-#define vvc vector<vc>
-#define vs vector<string>
 
 const int N = 10;
 const db h = 1/db(N);
@@ -29,12 +23,12 @@ const db xip = 0.5;
 const db xis0 = 0.5;
 const db xin0 = 1-xis0;
 const db nu = 0.5;
+const db dt = 0.01;
 
-vd prodmatvec(vvd& mat, vd& v) {
+vd prodmatvec(const vvd& mat, const vd& vec) {
     // Check if multiplication is possible
     if (vec.size() != mat.size()) {
         cerr << "Error: Vector size and matrix row size must match!" << endl;
-        return 1;
     }
     // Resulting vector size will be equal to the number of columns in the matrix
     vector<double> result(mat[0].size(), 0.0);
@@ -52,9 +46,8 @@ vd prodmatvec(vvd& mat, vd& v) {
 vd vectorsum(const vd& v1, const vd& v2) {
     if (v1.size() != v2.size()) {
         cout << "Vectors must be of the same size!" << endl;
-        stopProgram();
     }
-    int k = v1.size()
+    int k = v1.size();
 
     vd v(k);
     for (int i = 0; i< k; ++i) {
@@ -67,9 +60,8 @@ vd vectorsum(const vd& v1, const vd& v2) {
 vd vectordif(const vd& v1, const vd& v2) {
     if (v1.size() != v2.size()) {
         cout << "Vectors must be of the same size!" << endl;
-        stopProgram();
     }
-    int k = v1.size()
+    int k = v1.size();
 
     vd v(k);
     for (int i = 0; i< k; ++i) {
@@ -89,7 +81,7 @@ vd vectorscale(const vd& v, db l) {
 }
 
 vvd matrixscale(const vvd& M, db l) {
-    vvd result(M.size(), M[0].size());
+    vvd result(M.size(), vd(M[0].size()));
     for (int i = 0; i < M.size(); i++) {
         for (int j = 0; j< M[0].size(); ++j) {
             result[i][j] = M[i][j]*l;
@@ -99,7 +91,7 @@ vvd matrixscale(const vvd& M, db l) {
 }
 
 vvd matrixsum(const vvd& A, const vvd& B) {
-    vvd result(A.size(), A[0].size());
+    vvd result(A.size(), vd(A[0].size()));
     for (int i = 0; i < A.size(); i++) {
         for (int j = 0; j< A[0].size(); ++j) {
             result[i][j] = A[i][j] + B[i][j];
@@ -108,8 +100,16 @@ vvd matrixsum(const vvd& A, const vvd& B) {
     return result;
 }
 
-double dot(vd& v1, vd& v2) {
-    return v1[0]*v2[0] + v1[1]*v2[1];
+db dot(const vd& v1, const vd& v2) {
+    int k = v1.size();
+    if (k != v2.size()) {
+        cout << "Vectors must be of the same size!" << endl;
+    }
+    db sum = 0;
+    for (int i = 0; i < k; ++i) {
+        sum += v1[i]*v2[i];
+    }
+    return sum;
 }
 
 double norm(const vd& v) {
@@ -123,7 +123,7 @@ double norm(const vd& v) {
 
 db w(db r) {
     if (r > 2*h) return 0;
-    else return q/pow(h, 2)*pow(1-r/(2*h), 4)*(1+n*r/h);
+    else return q/pow(h, 2)*pow(1-r/(2*h), 4)*(1+2*r/h);
 }
 
 db wp(db r) {
@@ -131,6 +131,7 @@ db wp(db r) {
     else return -5*r*q/(pow(h, 4)) * pow(1-r/(2*h), 3); //This formula may be wrong
 }
 
+// The paper uses a closed formula
 vd rhodot(vvd& r, vvd& v, vd& m) {
     vd rhodot(N);
     for (int a = 0; a< N; ++a) {
@@ -140,7 +141,7 @@ vd rhodot(vvd& r, vvd& v, vd& m) {
                 vd rab = vectordif(r[a], r[b]);
                 vd vab = vectordif(v[a], v[b]);
                 db wpab = wp(norm(rab));
-                Sa += m[b]*wpab / norm(rab) * dot(rab, vab)
+                Sa += m[b]*wpab / norm(rab) * dot(rab, vab);
             }
         }
         rhodot[a] = Sa;
@@ -188,7 +189,7 @@ vd theta(vd& m, vd& rho, vvd& r, vd& s, vvd& v, vvd& vs) {
                 db wpab = wp(x);
                 s1 += m[b]/rho[b]*wpab/x*pow(T(s[a])-T(s[b]), 2);
                 s2 += m[b]/rho[b]*(pow(dot(vectordif(vn(v[a], vs[a], s[a]), vn(v[b], vs[b], s[b])), 
-                                            vectordif(r[a], r[b])), 2)) / (x*x + nu*nu) * wpab(x) / x;
+                                            vectordif(r[a], r[b])), 2)) / (x*x + nu*nu) * wpab / x;
             }
         }
 
@@ -218,7 +219,7 @@ vd sdot(vd& m, vd& rho, vvd& r, vd& s, vvd& v, vvd& vs) {
         Sdot[a] = th[a]/ T(s[a]) / rho[a];
         db xisa = xis(s[a]);
         vd vnsa = vns(v[a], vs[a], s[a]);
-        vd ja = j(rho[a], s[a], xisa, vnsa)
+
         for (int b = 0; b < N; ++b) {
             if (b != a) {
                 vd rab = vectordif(r[a], r[b]);
@@ -251,7 +252,7 @@ vvd pi(db p, db rho, db xin, db xis, vd vns) {
 }
 
 vvd vdot(vd& m, vd& rho, vvd& r, vd& s, vvd& v, vvd& vs) {
-    vd Vdot(N);
+    vvd Vdot(N);
     vd Xin(N);
     vd Xis(N);
     vvd Vns(N);
@@ -267,53 +268,148 @@ vvd vdot(vd& m, vd& rho, vvd& r, vd& s, vvd& v, vvd& vs) {
         Vn[a] = vn(v[a], vs[a], s[a]);
     }
 
+
     for (int a = 0; a < N; ++a) {
-        vd sum = {0, 0};
+        vd sum(2, 0.0);
         for (int b = 0; b < N; ++b) {
             if (b != a) {
                 vd rab = vectordif(r[a], r[b]);
                 db x = norm(rab);
                 db wpab = wp(x);
+                vd vnab = vectordif(Vn[a], Vn[b]);
 
-                vectordif(sum, vectorscale(prodmatvec(matrixsum(matrixscale(Pi[a], 1/(rho[a]*rho[a])), 
+                sum = vectordif(sum, vectorscale(prodmatvec(matrixsum(matrixscale(Pi[a], 1/(rho[a]*rho[a])), 
                                                             matrixscale(Pi[b], 1/(rho[b]*rho[b]))), rab) ,
                                              m[b]*wpab/x));
                                              
-                vectorsum(sum, )
+                sum = vectorsum(sum, vectorscale(rab, m[b]*wpab/x*2*4*mu/rho[a]/rho[b]/(x*x + nu*nu)*dot(vnab, rab)));
+            }
+        }
+        Vdot[a] = sum;
+    }
+    return Vdot;
+}
+
+vvd vsdot(vd& m, vd& rho, vvd& r, vd& s, vvd& v, vvd& vs) {
+    vvd Vsdot(N);
+    vd Xin(N);
+    vd Xis(N);
+    vvd Vns(N);
+    vvd Vn(N);
+    vd pres(N);
+    vd Temp(N);
+    for (int a = 0; a < N; ++a) {
+        Xin[a] = xin(s[a]);
+        Xis[a] = 1-Xin[a];
+        Vns[a] = vns(v[a], vs[a], s[a]);
+        pres[a] = p(rho[a]);
+        Vn[a] = vn(v[a], vs[a], s[a]);
+        Temp[a] = T(s[a]);
+    }
+
+    for (int a = 0; a < N; ++a) {
+        vd sum(2, 0);
+        for (int b = 0; b < N; ++b) {
+            vd rab = vectordif(r[a], r[b]);
+            db x = norm(rab);
+            db wpab = wp(x);
+            vd vnab = vectordif(Vn[a], Vn[b]);            
+            if (b != a) {
+                sum = vectordif(sum, vectorscale(rab, m[b]*wpab/x*Xin[a]/rho[a]*dot(vnab, Vns[a])));
+                sum = vectordif(sum, vectorscale(rab, m[b]*wpab/x*(pres[a]/(rho[a]*rho[a]) + pres[b]/(rho[b]*rho[b]) + s[a]/rho[a]*(Temp[a] - Temp[b]))));
+            }
+        }
+        Vsdot[a] = sum;
+    }
+    return Vsdot;
+}
+
+vd rho(vd& m, vvd& r, vd& C) {
+    vd RHO = C;
+    for (int a = 0;  a < N; ++a) {
+        for (int b = 0; b < N; ++b) {
+            if (b != a) {
+                vd rab = vectordif(r[a], r[b]);
+                db x = norm(rab);
+                db wab = w(x);
+                RHO[a] += m[b]*wab;
             }
         }
     }
-
-
-
+    return RHO;
 }
 
 
 
 void simulation() {
-    int N = 10;
     int l = 1;
+    int n = 100;
 
-    vvd r(N, vd(2));
-    vvd v(N, vd(2));
-    vvd vs(N, vd(2));
-    vd rho(N);
-    vd s(N);
+    vvd R(N, vd(2));
+    vvd V(N, vd(2));
+    vvd VS(N, vd(2));
+    vd RHO(N);
+    vd S(N);
     vd T(N);
     vd m(N);
+    vd C(N);
 
+    // Input initial conditions
+    // ...
 
+    // Calculate C
+    for (int a = 0;  a < N; ++a) {
+        C[a] = RHO[a];
 
-    
+        for (int b = 0; b < N; ++b) {
 
+            if (b != a) {
+                vd rab = vectordif(R[a], R[b]);
+                db x = norm(rab);
+                db wab = w(x);
+                
+                C[a] += m[b]*wab;
+            }
+        }
+    }
+
+    vvd VDOT(N, vd(2));
+    vvd VSDOT(N, vd(2)); 
+    vd SDOT(N);
+
+    VDOT = vdot(m, RHO, R, S, V, VS);
+    VSDOT = vsdot(m, RHO, R, S, V, VS);
+
+    for (int i = 0; i < n; ++i) {
+        V = matrixsum(V, matrixscale(VDOT, dt/2));
+        VS = matrixsum(VS, matrixscale(VSDOT, dt/2));
+
+        R = matrixsum(R, matrixscale(V, dt/2));
+
+        RHO = rho(m, R, C);
+
+        SDOT = sdot(m, RHO, R, S, V, VS);
+
+        S = vectorsum(S, vectorscale(SDOT, dt/2));
+
+        R = matrixsum(R, matrixscale(V, dt/2));
+
+        RHO = rho(m, R, C);
+
+//      We add this, we believe the paper is incomplete
+        SDOT = sdot(m, RHO, R, S, V, VS);
+
+        S = vectorsum(S, vectorscale(SDOT, dt/2));
+
+        VDOT = vdot(m, RHO, R, S, V, VS);
+        VSDOT = vsdot(m, RHO, R, S, V, VS);
+
+        V = matrixsum(V, matrixscale(VDOT, dt/2));
+        VS = matrixsum(VS, matrixscale(VSDOT, dt/2));
+    }
 
 }
 
 signed main(){
-    int t;
-    cin >> t;
-    for (int i = 0; i < t; ++i) {
-        
-        solution();
-    }
+    simulation();
 }
