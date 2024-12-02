@@ -81,9 +81,11 @@ vd vectorscale(const vd& v, db l) {
 }
 
 vvd matrixscale(const vvd& M, db l) {
-    vvd result(M.size(), vd(M[0].size()));
-    for (int i = 0; i < M.size(); i++) {
-        for (int j = 0; j< M[0].size(); ++j) {
+    int m = M.size();
+    int n = M[0].size();
+    vvd result(m, vd(n));
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; ++j) {
             result[i][j] = M[i][j]*l;
         }
     }
@@ -91,9 +93,11 @@ vvd matrixscale(const vvd& M, db l) {
 }
 
 vvd matrixsum(const vvd& A, const vvd& B) {
-    vvd result(A.size(), vd(A[0].size()));
-    for (int i = 0; i < A.size(); i++) {
-        for (int j = 0; j< A[0].size(); ++j) {
+    int m = A.size();
+    int n = A[0].size();
+    vvd result(m, vd(n));
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j< n; ++j) {
             result[i][j] = A[i][j] + B[i][j];
         }
     }
@@ -102,7 +106,8 @@ vvd matrixsum(const vvd& A, const vvd& B) {
 
 db dot(const vd& v1, const vd& v2) {
     int k = v1.size();
-    if (k != v2.size()) {
+    int m = v2.size();
+    if (k != m) {
         cout << "Vectors must be of the same size!" << endl;
     }
     db sum = 0;
@@ -217,8 +222,6 @@ vd sdot(vd& m, vd& rho, vvd& r, vd& s, vvd& v, vvd& vs) {
     
     for (int a = 0; a < N; ++a) {
         Sdot[a] = th[a]/ T(s[a]) / rho[a];
-        db xisa = xis(s[a]);
-        vd vnsa = vns(v[a], vs[a], s[a]);
 
         for (int b = 0; b < N; ++b) {
             if (b != a) {
@@ -381,6 +384,7 @@ void simulation() {
     VSDOT = vsdot(m, RHO, R, S, V, VS);
 
     for (int i = 0; i < n; ++i) {
+        cout << "Hello" << endl;
         V = matrixsum(V, matrixscale(VDOT, dt/2));
         VS = matrixsum(VS, matrixscale(VSDOT, dt/2));
 
@@ -406,7 +410,12 @@ void simulation() {
 
         V = matrixsum(V, matrixscale(VDOT, dt/2));
         VS = matrixsum(VS, matrixscale(VSDOT, dt/2));
+
+        // Save data
+        
     }
+
+
 
 }
 
