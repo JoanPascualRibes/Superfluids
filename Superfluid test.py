@@ -56,20 +56,21 @@ problem.add_equation('dt(s) = -v@grad(s) -(1/rho)*div(rho*s*xis*vns)')
 problem.add_equation('dt(v) = -v@grad(v) -(1/rho)*div(rho*xin*xis*vns*vns + idn*P )')
 problem.add_equation('dt(vs) = -v@grad(vs) +xin*grad_vnt@vns - grad(P)/rho + s*grad(T)')
 
+
 #Initial value
-rho['g'] = 1000 + 250*np.sin(x) +250*np.sin(y)
-s['g'] = 1000 + 250*np.sin(x) +250*np.sin(y)
-v['g'][0] = 0
+rho['g'] = 1000 + np.exp(-(y**2)) 
+s['g'] = 1000 
+v['g'][0] = 0.0001
 v['g'][1] = 0
-vs['g'][0] = 0
+vs['g'][0] = 0.0001
 vs['g'][1] = 0
 
 #Solver
 solver = problem.build_solver(d3.RK222)
-solver.stop_sim_time = 5*1.e-1
+solver.stop_sim_time = 1.e-2
 
 # Main loop
-timestep = 1.e-4
+timestep = 1.e-5
 rho_list = [np.copy(rho['g'])]
 s_list = [np.copy(s['g'])]
 v_list = [np.copy(v['g'])]
@@ -94,7 +95,7 @@ t_array = np.array(t_list)
 X, Y = np.meshgrid(x, y)
 
 #Plot
-fig, axs = plt.subplots(1, 4, figsize=(11, 4))
+fig, axs = plt.subplots(1, 4, figsize=(16, 4))
 
 
 def update(n):
@@ -102,27 +103,29 @@ def update(n):
     axs[1].cla()
     axs[2].cla()
     axs[3].cla()
+    #axs[4].cla()
     axs[0].set_title('rho')
     axs[1].set_title('s')
     axs[2].set_title('v')
     axs[3].set_title('vs')
-    axs[0].pcolormesh(rho_array[n],  cmap='RdBu_r')
-    axs[1].pcolormesh(s_array[n],   cmap='RdBu_r')
+    #axs[4].set_title('speed')
+    axs[0].imshow(np.transpose(rho_array[n]),  cmap='RdBu_r')
+    axs[1].pcolormesh(np.transpose(s_array[n]),   cmap='RdBu_r')
     speed = np.sqrt(v_array[n,0]**2 + v_array[n,1]**2)
     speeds = np.sqrt(vs_array[n,0]**2 + vs_array[n,1]**2)
     if np.max(speed) > 0:
-        lw = speed / np.max(speed)
+        lw = 2*speed / np.max(speed)
     else:
         lw = speed
     if np.max(speeds) > 0:
-        lws = speeds / np.max(speeds)
+        lws = 2*speeds / np.max(speeds)
     else:
         lws = speeds
-    axs[2].streamplot(X, Y, v_array[n,0], v_array[n,1], density=0.3, color='k' , linewidth=lw, broken_streamlines=True)
-    axs[3].streamplot(X, Y, vs_array[n,0], vs_array[n,1], density=0.3, color='k' , linewidth=lws, broken_streamlines=True)
+    axs[2].streamplot(X, Y, np.transpose(v_array[n,0]), np.transpose(v_array[n,1]), density=0.5, color='k' , linewidth=lw, broken_streamlines=True)
+    axs[3].streamplot(X, Y, np.transpose(vs_array[n,0]), np.transpose(vs_array[n,1]), density=0.5, color='k' , linewidth=lws, broken_streamlines=True)
+    #axs[4].pcolormesh(speed, cmap='RdBu_r')
 
-
-ani = animation.FuncAnimation(fig, update, blit=False, frames=len(rho_list), interval = 200, repeat = False )
+ani = animation.FuncAnimation(fig, update, blit=False, frames=len(rho_list), interval = 200, repeat = True )
 plt.show()
 
-ani.save(filename="Superfluid.gif", writer="pillow")
+#ani.save(filename="Superfluid.gif", writer="pillow")
