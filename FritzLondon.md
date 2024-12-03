@@ -36,6 +36,7 @@ the transition from He II to H2 I is not accompanied by a latent heat.
 In 1932 Specific heat measurements by Keesom and Clusius showed a singularity of the specific heat curve whose characteristic profile, resembling the shape of the letter lambda,
 has given rise to the name $\lambda$-point. Lambda-point occur in many substances and are characterized by vanishing latent heat and the above-mentioned sort of singulariry of 
 specific heat.
+
 <img src="https://github.com/user-attachments/assets/35648c30-5ddd-452f-9857-348dd1f00637" width="500" height="350">
 <img src="https://github.com/user-attachments/assets/1cba8300-7003-434b-b905-513ffb3f75d0" width="500" height="350">
 <img src="https://github.com/user-attachments/assets/177c59d0-c693-4ce0-8f14-f12947a4553b" width="500" height="350">
