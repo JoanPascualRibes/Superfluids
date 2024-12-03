@@ -9,21 +9,23 @@ using namespace std;
 #define vvi vector<vi>
 #define vvd vector<vd>
 
-const int N = 10;
-const db h = 1/db(N);
+const int N = 50;
 const db q = 7/(4*M_PI);
 const db beta = 0;
-const db mu = 1;
-const db T0 = 1;
-const db C = 0.3;
+const db mu = 0;
+const db T0 = 1.9;
+const db C = 3902;
 const db s0 = 0.5;
-const db rho0 =1;
-const db u1 = 0.5;
-const db xip = 0.5;
-const db xis0 = 0.5;
-const db xin0 = 1-xis0;
-const db nu = 0.5;
-const db dt = 0.01;
+const db rho0 =145.5;
+const db u1 = 40;
+const db xip = 18.83;
+const db xin0 = 0.4195;
+const db xis0 = 1-xin0;
+const db nu = 0.05;     //Non specified
+const db dt = 0.00001;
+const int n = 201;
+const db L = 1;
+const db h = 3*L/N;
 
 vd prodmatvec(const vvd& mat, const vd& vec) {
     // Check if multiplication is possible
@@ -345,20 +347,23 @@ vd rho(vd& m, vvd& r, vd& C) {
 
 
 void simulation() {
-    int l = 1;
-    int n = 100;
 
     vvd R(N, vd(2));
     vvd V(N, vd(2));
     vvd VS(N, vd(2));
     vd RHO(N);
     vd S(N);
-    vd T(N);
     vd m(N);
     vd C(N);
 
-    // Input initial conditions
-    // ...
+
+    //Initial conditions
+    for (int a = 0; a < N; ++a) {
+        R[a][0] = db(a)/N;
+        RHO[a] = rho0;
+        S[a] = s0;
+        m[a] = 0.001;
+    }
 
     // Calculate C
     for (int a = 0;  a < N; ++a) {
@@ -383,8 +388,22 @@ void simulation() {
     VDOT = vdot(m, RHO, R, S, V, VS);
     VSDOT = vsdot(m, RHO, R, S, V, VS);
 
+    ofstream outFile("data.csv");
+    if (!outFile) {
+        cerr << "ERROR: Could not open the file. \n";
+    }
+    outFile << "iteration,particle,Rx,Ry,Vx,Vy,VSx,VSy,RHO\n"; // Header
+
+    for (size_t a = 0; a < N; ++a) {
+        outFile << -1 << "," << a << "," << R[a][0] << "," 
+            << R[a][1] << "," << V[a][0] << "," << V[a][1] 
+            << "," << VS[a][0] << "," << VS[a][1] << "," 
+            << RHO[a] << "\n";
+    }
+
     for (int i = 0; i < n; ++i) {
-        cout << "Hello" << endl;
+        if (i%5 == 0) cout << "Completed iteration " << i  << endl;
+
         V = matrixsum(V, matrixscale(VDOT, dt/2));
         VS = matrixsum(VS, matrixscale(VSDOT, dt/2));
 
@@ -412,9 +431,17 @@ void simulation() {
         VS = matrixsum(VS, matrixscale(VSDOT, dt/2));
 
         // Save data
-        
+
+        for (size_t a = 0; a < N; ++a) {
+            outFile << i << "," << a << "," << R[a][0] << "," 
+                << R[a][1] << "," << V[a][0] << "," << V[a][1] 
+                << "," << VS[a][0] << "," << VS[a][1] << "," 
+                << RHO[a] << "\n";
+        }
     }
 
+    outFile.close();
+    cout << "Data saved in 'data.csv'.\n";
 
 
 }
