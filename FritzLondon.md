@@ -1,3 +1,4 @@
+
 # SUPERFLUIDS: Fritz London
 
 ## Introduction: Superfluid 
@@ -39,30 +40,25 @@ specific heat.
 
 <img src="https://github.com/user-attachments/assets/35648c30-5ddd-452f-9857-348dd1f00637" width="500" height="350">
 <img src="https://github.com/user-attachments/assets/1cba8300-7003-434b-b905-513ffb3f75d0" width="500" height="350">
-<img src="https://github.com/user-attachments/assets/177c59d0-c693-4ce0-8f14-f12947a4553b" width="500" height="350">
+<img src="https://github.com/user-attachments/assets/ffeb4624-3bec-4c1d-8748-370500bbc59c" width="500" height="350"> 
 
+The most conspicuos pecularity of the diagram on P-T plane is the absence of a triple point between the solid, liquid and gaseous states. Instead are actually two triple points, at the ends of the $\lambda$-line which separates liquid He I from He II. Anether pecularity is that melting curve seem to approach T = 0 at a pressure of about 25 atm.
 
+From the Clausius-Clapeyron equation $dP_m / dT =(S_{liq}-S_{sol})/(V_{liq}-V_{sol})$ where $P_m$ is the melting pressure curve, it follow that at 1ºK the entropy of the liquid must be practicall equal to entropy of the solid. Hence ir seem as if between 2.2ºK and 1ºK liquid helium loses all entropy characteristic of the disorder of the ordinary liquid state.
 
+$\Delta U = T \Delta S - P_m \Delta V \qquad \Delta S = (dP_m/dT)\Delta V \quad \implies \quad \Delta U = T \left( dP_m / dT - P_m/T \right) \Delta V$ Which Implies if a point on the melting-pressure curve tangent can be drawn from $P=0$ $T=0$ $\left( \therefore \ dP_m / dT = P_m / T \right)$, the energy difference must change sign at the temperature of point of contact. For no other substance can such a tangent be contructed because ordinarily melting or sublimation curves start at 0ºK and are always convex toward the T axis. This means in general solid state is state of lowest energy.
 
+Solid helium cannot be melted isothermally by supplying het to the system, since there is no heat of mealting. Close to absolute zero, solidificaciotn and melting are purely mechanical processes. No entropy change is involved in this trancition. At absolute zero, where the system is in its lowest (single) quantum state, melting must then consist in an adiabatic transformation of this quantum state.
 
+Liquid helium can overcome obstacles freely even without requiring a noticeable preassure difference and it seems to leave its entropy behind. The fact that no entropy transfer in connected with the superfluid flow clearly indicates that no entropy transfer is connected with the superfluid flow clearly indicates that this flow is again a purely mechanical process. Ir appears then as if actually is this superfluid transfer process a single quantum state is adiabatically so transformed as to pass through the capillaries.
 
+## Energy and structure of condensed helium at absolute zero
 
-SOLID representa:
+Let $\phi(r)$ be the potential of the force between two molecules which may be assumed to depend only on their separation r and to be independent of the presence of other molecules. Furthermore he N molecules are supposed to be enclosed in a volume V.
 
-* S - Single-responsiblity Principle :dragon_face:
-* O - Open-closed Principle :dolphin:
-* L - Liskov Substitution Principle :shark:
-* I - Interface Segregation Principle :tiger2:
-* D - Dependency Inversion Principle :parrot:
+Classically, the most stable state would be where particles are at rest. Presumably be closed-packed lattice. In quantum mechanics the lowest state is given by minimum of the integral 
+$E=\int_V \dots \int_V \ \ \frac{h^2}{8\pi^2 m} \Sigma_a \left(\nabla_a \Psi \cdot \nabla_a \Psi^{\ast}\right) + \Phi \Psi\Psi^{\ast} \ \ d^3 r_1 \dots d^3 r_N$. For all substances except helium the following mothed leads in general to a satisfactory approximation by considering harmonic oscillations $E_{min} = \Phi_0 + \frac{h}{2}\Sigma \nu_k$ where $\nu_k$ is the frecuency of normal modes. Of course this energy can be calculated only if the spectrum is known, for which emperical data is fitted. 
 
-### :dragon_face: Single-Responsibility Principle :dragon_face:
->**Una clase deberái tener un y sólo un trabajo.**
+It would not be sensible to calculate the characteristic vibrational modes for the volume corresponding to the classical equilibrium positions, and then to determine the zero point vibrations of those modes, if the colume of the liquid is actually so much larger. Liquid helium may be visualized as held together by the attractive forces balanced merely by the zero point repulsion ( not merely by the Van der Waals repulsion), the atoms are floating so far apart from each other thtat the repulsive forces do not interlock as in ordinary liquids. It can be foreseen that this circumstances will be importat for explaining the fact that helium cannot be solidified merely by cooling.
 
-> [!NOTE]
-> Esta es la MÁS IMPORTANTE.
-
-### :dolphin: Open-Closed Principle :dolphin:
->**Los objetos o entidades deben estar abiertas para extensión pero cerradas para modificación** .
-Es mejor hacer una interfaz robusta antes que abusar de arboles lógicos con los que la función modificaría su funcionamiento.
-
->Fuente: https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design
+Keesom and Taconis moda an X-ray analysis of liquid helium. For both liquid He I and He II a pattern typical of a liquid was found; it showed a single rather diffuse ring at a difraction angle on about 28º for a wave length 1.58 $\overset\circ A$. No difference between the patterns of the two forms of the liquid could be discerned. Keesom and Taconis tried to interpret their result by a radial distribution in which every atom has six nearest neighbors at a distance of about 3.16 $\overset\circ A = 2^{-1/6}(V/N)^{1/3}$. They showed that such a distribution could be represented by a peculiar structure: imagine a facecentered cubic lattice of density double that of the liquid if all its lattice points are filled, then remove from it half of the atoms in such a way that each atom is currounded by six atoms and six empty sites. The strucutre in question is a configuration of space group $T_d^2$. 
