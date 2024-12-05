@@ -2,38 +2,38 @@
 # SUPERFLUIDS: Fritz London
 
 ## Introduction: Superfluid 
-According to classical theory, at sufficiently low temperatures, any system composed of identical particles confined to a given column should come to rest.
+According to classical theory, at sufficiently low temperatures, any system composed of identical particles confined to a given volume should come to rest.
 
-According to quantum theory, the most stable of any system is a kind of kinetic equilibrium for so-called zero point motion characterized by the minimum average 
-Total (potential + kinetic) energy under the supplementary connection of Heisemberf inequality.
+According to quantum theory, the most stable state of any system is a kind of kinetic equilibrium for so-called zero point motion characterized by the minimum average 
+Total (potential + kinetic) energy under the supplementary connection of Heisemberg inequality.
 
 The existence of superfluid and in particular the strange transfer mechanism they exhibit are direct indications that they represent macroscopic system for which the classical 
-Theory is incompetent and that presumably quantum mechanisms are relevant to their constitution as a whole.
+theory is incompetent and that presumably quantum mechanisms are relevant to their constitution as a whole.
 
 In 1924 Einstein, generalizing the ideas of the Indian physics Bose, developed the concept of a gas of identical molecules where two cases of A here B there and A there B here 
 Are indistinguishable and one single case indeed. Theis preference would least, at a well-defined temperature, to a kind of change of state of aggregation where the molecules 
 Would "condese" into the lowest quantum state, the state of momentum zero.
 
-Manifested by a breaking in the specific heat curve $C_{V}$ at a well-defined "critical temperature $T_ {0} $. At this temperature, the mean thermal (kinetic) energý becomes so 
-Small thtat the mean deBroglie wavelength $\lambda = h/p$ assumes a value of the order of the minimum molecular distance. When the temperature is lowered below the is critical 
-Temperature $T_0$ the velocity distribution becomes inhomogeneous. A finite fraction of all molecules are assembled in the lowest quantum state (p=0) and accordingly has a 
-microscopically large deBRoglie wave length while the rest of the molecules have a velocity distribution similar to that of a gas. The fraction of molecules in the lowers 
-State increases with decreasing temperature until, at 0º absolute, all molecules are assembled in this particular state.
+Manifested by a breaking in the specific heat curve $C_{V}$ at a well-defined "critical temperature $T_ {0} $. At this temperature, the mean thermal (kinetic) energy becomes so 
+small that the mean deBroglie wavelength $\lambda = h/p$ assumes a value of the order of the minimum molecular distance. When the temperature is lowered below this critical 
+temperature $T_0$ the velocity distribution becomes inhomogeneous. A finite fraction of all molecules are assembled in the lowest quantum state (p=0) and accordingly has a 
+microscopically large deBroglie wave length while the rest of the molecules have a velocity distribution similar to that of a gas. The fraction of molecules in the lowerst 
+state increases with decreasing temperature until, at 0º absolute, all molecules are assembled in this particular state.
 
 In superconductors as well as in superfluid helium, we enconter an equilibrium between two fluids which mutually interpenetrate in ordinary space but are in general separated 
 in momentum space. 
 
-It has been maintained that certain actions betewwen macromolecules in biochemistry could not be undesetood unless could be conceivec as conditioned by some quantum mechanism 
+It has been maintained that certain actions between macromolecules in biochemistry could not be undesetood unless could be conceived as conditioned by some quantum mechanism 
 involving the system as a whole. Of course it is conceivable that in some biological process the concept of a fluid state of entropy zero could play a decisive role, because 
 the quantum phenomena gives the possibility of stability with the possibility of motion without implying dissipation process.
 
 ## Remarkable properties of liquid helium.
 
-In 1908 Kamerlingh Onnes liquefied helium (critical temperature 5.2ºK). He found that when the liqueid is cooled below 2.2ºK it starts expanding insted of continuing to contract,
+In 1908 Kamerlingh Onnes liquefied helium (critical temperature 5.2ºK). He found that when the liquid is cooled below 2.2ºK it starts expanding insted of continuing to contract,
 thus deviating from the behaviour of more substances.
-In 1924 Onnes and Boks found that the densiry-temperature funciton has a sharp maximum with a discontinuty of thus slope at that temperature. 
+In 1924 Onnes and Boks found that the density-temperature funciton has a sharp maximum with a discontinuty of its slope at that temperature. 
 In 1928 Keeson and Wolke were first to use terminology "helium I" and "helium II" suggesting the idea of a kind of allotropic modification. In contrast to ordinary phase transitions,
-the transition from He II to H2 I is not accompanied by a latent heat.
+the transition from He II to He I is not accompanied by a latent heat.
 In 1932 Specific heat measurements by Keesom and Clusius showed a singularity of the specific heat curve whose characteristic profile, resembling the shape of the letter lambda,
 has given rise to the name $\lambda$-point. Lambda-point occur in many substances and are characterized by vanishing latent heat and the above-mentioned sort of singulariry of 
 specific heat.
@@ -42,16 +42,16 @@ specific heat.
 <img src="https://github.com/user-attachments/assets/1cba8300-7003-434b-b905-513ffb3f75d0" width="500" height="350">
 <img src="https://github.com/user-attachments/assets/ffeb4624-3bec-4c1d-8748-370500bbc59c" width="500" height="350"> 
 
-The most conspicuos pecularity of the diagram on P-T plane is the absence of a triple point between the solid, liquid and gaseous states. Instead are actually two triple points, at the ends of the $\lambda$-line which separates liquid He I from He II. Anether pecularity is that melting curve seem to approach T = 0 at a pressure of about 25 atm.
+The most conspicuos pecularity of the diagram on P-T plane is the absence of a triple point between the solid, liquid and gaseous states. Instead are actually two triple points, at the ends of the $\lambda$-line which separates liquid He I from He II. Another pecularity is that melting curve seem to approach T = 0 at a pressure of about 25 atm.
 
-From the Clausius-Clapeyron equation $dP_m / dT =(S_{liq}-S_{sol})/(V_{liq}-V_{sol})$ where $P_m$ is the melting pressure curve, it follow that at 1ºK the entropy of the liquid must be practicall equal to entropy of the solid. Hence ir seem as if between 2.2ºK and 1ºK liquid helium loses all entropy characteristic of the disorder of the ordinary liquid state.
+From the Clausius-Clapeyron equation $dP_m / dT =(S_{liq}-S_{sol})/(V_{liq}-V_{sol})$ where $P_m$ is the melting pressure curve, it follow that at 1ºK the entropy of the liquid must be practicall equal to entropy of the solid. Hence it seem as if between 2.2ºK and 1ºK liquid helium loses all entropy characteristic of the disorder of the ordinary liquid state.
 
 $\Delta U = T \Delta S - P_m \Delta V \qquad \Delta S = (dP_m/dT)\Delta V \quad \implies \quad \Delta U = T \left( dP_m / dT - P_m/T \right) \Delta V$ Which Implies if a point on the melting-pressure curve tangent can be drawn from $P=0$ $T=0$ $\left( \therefore \ dP_m / dT = P_m / T \right)$, the energy difference must change sign at the temperature of point of contact. For no other substance can such a tangent be contructed because ordinarily melting or sublimation curves start at 0ºK and are always convex toward the T axis. This means in general solid state is state of lowest energy.
 
-Solid helium cannot be melted isothermally by supplying het to the system, since there is no heat of mealting. Close to absolute zero, solidificaciotn and melting are purely mechanical processes. No entropy change is involved in this trancition. At absolute zero, where the system is in its lowest (single) quantum state, melting must then consist in an adiabatic transformation of this quantum state.
+Solid helium cannot be melted isothermally by supplying heat to the system, since there is no heat of mealting. Close to absolute zero, solidificaciotn and melting are purely mechanical processes. No entropy change is involved in this trancition. At absolute zero, where the system is in its lowest (single) quantum state, melting must then consist in an adiabatic transformation of this quantum state.
 Even at finite temperatures, at which liquid helium II has some entropy, there is a very peculiar transfoer process by which at least a part of the liquid can slip through the finest cracks and extremely narrow slits and capillaries, which for normal liquids are, in effect, impassable. 
 
-Liquid helium can overcome obstacles freely even without requiring a noticeable preassure difference and it seems to leave its entropy behind. The fact that no entropy transfer in connected with the superfluid flow clearly indicates that no entropy transfer is connected with the superfluid flow clearly indicates that this flow is again a purely mechanical process. Ir appears then as if actually is this superfluid transfer process a single quantum state is adiabatically so transformed as to pass through the capillaries.
+Liquid helium can overcome obstacles freely even without requiring a noticeable preassure difference and it seems to leave its entropy behind. The fact that no entropy transfer in connected with the superfluid flow clearly indicates that no entropy transfer is connected with the superfluid flow clearly indicates that this flow is again a purely mechanical process. It appears then as if actually is this superfluid transfer process a single quantum state is adiabatically so transformed as to pass through the capillaries.
 
 ### The "Super" properties of liquid helium II 
 
