@@ -21,6 +21,10 @@
 \end{abstract}
 
 
+\section{Teoria básica de fluidos}
+
+Navier-Stokes...
+
 
 \section{The discovery of superfluidity}
 
@@ -80,13 +84,50 @@ From the previous section we know that if we had momentarily a point with low su
 The lambda peak, zero entropy, frictionless flow, together with the increase of condensed (superfluid) particles with decreasing temperature, leads us to conclude that we have before us a Bose-Einstein condensate!
 
 The normal component presents a nature that can be interpreted as the gas of Bogoliubov excitations on top of the condensate, \black{WHICH WE WILL NOT TREAT HERE}.
+\\
 
+We revall the hydrodynamic equation for a condensate for the superfluid component. Also known as the Euler equation: 
 
+\[\frac{\partial \mathbf{v_s}}{\partial t} + (\mathbf{v_s}\cdot \mathbf{\nabla})\mathbf{v_s} = -\frac{1}{m}\nabla \mu\]
 
+Where $\mu$ is the chemical potential, which we derive thermodynamically as follows. The chemical potential in terms of pressure and temperature is related with the Gibbs energy:
 
-\section{Teoria básica de fluidos}
+\[G(N, p, T)= N \mu(p, T)\]
 
-Navier-Stokes...
+Where $N$ is the number of particles. In a differential form:
+
+\[N d\mu(p, Y) = \frac{\partial G}{\partial p} \bigg|_T + \frac{\partial G}{\partial T}\bigg|_pdT = Vdp - S dT\]
+
+We have used the well-known definition of Gibbs energy and the relation:
+\[G = VP - ST - TS = \mu N\]
+
+Therefore, writing 
+\[\rho = (Nm)/V \qquad \sigma = \frac{S}{mN}\]
+We finally have
+\[\nabla \mu = \frac{m}{\rho} \nabla \rho - m \sigma \nabla T\]
+Now, by direct substitution:
+
+\[\frac{\partial \mathbf{v_s}}{\partial t} + (\mathbf{v_s}\cdot \mathbf{\nabla})\mathbf{v_s} = -\frac{1}{\rho}\nabla p + \sigma \nabla T \tag{I}\]
+
+However, the whole fluid has viscosity, so we need the Navier-Stokes equation:
+\[
+\rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) + \rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) = -\nabla p + \eta_n \nabla^2 \mathbf{v}_n \tag{II}
+\]
+
+Substracting the equation for the superfluid part (I) from the equation of the entire fluid (II) in order to isolate the hydrodynamic equation of the normal component:
+\[
+\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) = \left( \frac{\rho_s}{\rho} - 1 \right) \nabla p - \rho_s \sigma \nabla T + \eta_n \nabla^2 \mathbf{v}_n \]
+
+Here the four unknowns are $\rho_s$, $\rho_n$, $\mathbf{v}_s$, and $\mathbf{v}_n$. Therefore, we need two more equations. One of them is the continuity equation $\partial \rho / \partial t + \nabla \cdot \mathbf{j} = 0$. Note that we impose conservation for the total mass density instead of doing it for both components separately, because of the plausible transformation between them. In addition, we can impose the entropy transport continuty equation $\partial (\rho \sigma) / \partial t = - \nabla \cdot (\rho \mathbf{v}_n)$.
+
+Now wwe have closed the system of hydrodynamic equations for He-II, known as the two-fluid model:
+\begin{align}
+\rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) &= -\frac{\rho_s}{\rho} \nabla p + \rho_s \sigma \nabla T,  \\
+\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) &= -\frac{\rho_n}{\rho} \nabla p - \rho_s \sigma \nabla T + \eta_n \nabla^2 \mathbf{v}_n,  \\
+\frac{\partial (\rho_s + \rho_n)}{\partial t} &= -\nabla \cdot \mathbf{j}, \\
+\frac{\partial (\rho \sigma)}{\partial t} &= -\nabla \cdot (\rho \mathbf{v}_n). 
+\end{align}
+
 
 \section{Modelo de Landau}
 \cite{Kincl}
