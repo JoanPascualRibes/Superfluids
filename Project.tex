@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{amscd,amssymb,amsmath,latexsym,graphicx,epsfig,color,url}
+\usepackage{amscd,amssymb,amsmath,latexsym,graphicx,epsfig,color,url,todonotes}
 
 \usepackage{graphicx} % Required for inserting images
 
@@ -10,20 +10,88 @@
 
 \newcommand{\Res}{\operatorname{Res}}
 \title{Superfluids}
-\author{Eloi Estèvez, Eki González, Joan Pascual, Timothy David Skipper}
+\author{Eloi Estèvez \and Eki González \and Joan Pascual \and Timothy David Skipper}
 \date{\today}
 
 \begin{document}
 
 \maketitle
 \begin{abstract}
-[Write abstract]
+\todo{Write abstract}
 \end{abstract}
 
+\section{Bose-Einstein condensates}
 
-\section{Teoria básica de fluidos}
+\todo{Brief history and description of properties}
 
-Navier-Stokes...
+A Bose-Einstein condensate is a many-particle system which, due to certain
+conditions, can be described by a macroscopic wave function.  Thus, the particles
+behave with a coherent flow.  We can already see how superfluids will be related
+with these systems, since a coherent flow will mean no collisions between atoms
+and thus no friction or viscosity.  However, we must note that BECs do not always
+coincide with superfluids.
+\\
+
+Let us first consider a BEC where the particles form an ideal gas.  In this case we have $N$ particles that do not interact with each other.  Therefore, we can write the wave function of the system as a product of
+individual wave functions:
+\[\Psi(\mathbf{r}_1, \dots, \mathbf{r}_N) =
+    \alpha_{s_1}(\mathbf{r}_1)\dotsb\alpha_{s_N}(\mathbf{r}_N)\]
+This isn't entirely correct, though.  Since the particles are indistinguishable, and in particular are bosons, the wave function $\Psi$ must be symmetric.  We can amend this by symmetrizing our function:
+\[\Psi(\mathbf{r}_1, \dots, \mathbf{r}_N) \propto \sum_{\sigma}
+        \alpha_{s_1}(\mathbf{r}_{\sigma(1)})\dotsb
+        \alpha_{s_N}(\mathbf{r}_{\sigma(N)})\]
+Where $\sigma$ is summed over the permutations of $N$ objects.  The proportionality factor can be determined...
+\\
+
+For large $N$, the previous expression quickly becomes unwieldy and difficult to deal with.  Fortunately there exists an alternative formalism of quantum mechanics, called \textbf{second quantization}, that greatly simplifies the treatment of many-particle systems.  In `first quantization', the system is expressed in terms of each particle $j$ being in the state $s_i$: $\alpha_{s_i}(\mathbf{r}_j)$.  In second quantization, however, we forget about the individuality of the particles and simply talk of \textit{how many particles are in each possible state}.  This is natural because the particles are indistinguishable anyway, and so we don't need to worry about symmetrizing (or antisymmetrizing for fermions) the wave function any more.
+\\
+
+So let $\{\psi_\lambda\}$ be a basis of wave functions indexed by $\lambda$, which may consist of one or multiple quantum numbers.  The basis of states in second quantization are described by a set of non-negative integers $\{n_\lambda\}$ where $n_\lambda$ indicates the number of particles occupying the state $\lambda$.  If we fix the total number of particles, $N$, we require $\sum_\lambda{n_\lambda} = N$.
+\\
+
+What is the probability density of the state $\{n_\lambda\}$ at a point $\mathbf{r}$?  For every state, there are $n_\lambda$ particles in that state, and a probability density of $\psi_\lambda^*(\mathbf{r}) \psi_\lambda(\mathbf{r})$ for every particle (assuming the $\psi_\lambda$'s are normalized). So in total it will be $\rho(\mathbf{r}) = \sum_l{n_l \psi_\lambda^*(\mathbf{r}) \psi_\lambda(\mathbf{r})}$.
+\\
+
+Now our system is a Bose-Einstein condensate if it is at such a low temperature that a large number of the particles are at the ground state, i.e. $n_0 \approx N$.  In this case, $\rho(\mathbf{r})$ is determined mostly by the component $n_0\psi^*_0\psi_0$, and the others are small fluctuations which vanish as the temperature approaches $0$.  If we define $\Psi_0(\mathbf{r}) = \sqrt{n_0} \psi_0$, then the BEC is described in large part as if it were a single-particle system; thus, $\Psi_0$ is called the \textbf{macroscopic wave function}.
+
+\todo{Mention interacting BECs / Dynamics / How superfluids tie in to this}
+
+\section{Fluid dynamics}
+The classical theory of fluid dynamics generally assumes that the fluid is
+continuous and indivisible.  This is of course not true since it is composed
+of molecules, but at human scales, where we are talking about $10^{23}$
+particles, it turns out to be an excellent approximation.
+\\
+
+We take the fluid to be located in a region $V$ of space.  Its state is
+described by the vector field of velocities $\mathbf{v}$ and the density
+field $\rho$.  We can then describe its motion through a series of partial
+differential equations.  Because we are assuming the fluid is continuous, we
+can suppose that $\mathbf{v}$ and $\rho$ are smooth enough for the equations.
+\\
+
+Firstly, we have the continuity of mass:
+\[\frac{\partial\rho}{\partial t} + \nabla\cdot(\rho\mathbf{v}) = 0\]
+The first term indicates the rate of change of mass at a point, and the second
+term represents the flux of mass leaving that point.
+\\
+
+Secondly, we can use Newton's second law to derive a law of
+\textbf{balance of momentum}.	This can be written as:
+\[\rho\frac{\mathrm{D}\mathbf{v}}{\mathrm{D} t}= \mathbf{f}\]
+where $\mathbf{f}$ is the total force per unit volume.	Here we must use the
+total derivative
+$\mathrm{D}/\mathrm{D}t = \frac{\partial}{\partial t} + (\nabla \cdot
+    \mathbf{v})$
+since we are referencing the rate of change of the piece of fluid that is
+flowing with velocity $\mathbf{v}$.
+\begin{itemize}
+    \item Conservative forces can be written as the gradient of a potential: $-\nabla\phi$.
+    \item In an ideal fluid, the only forces are due to the pressure, $-\nabla p$ and the external body forces, $\rho \mathbf{b}$ where $\mathbf{b}$ is the body force per unit mass.
+    \item In a real fluid there are additional forces due to viscosity. In the Navier-Stokes equation the viscous term is proportional to the Laplacian of the velocity:
+\[\rho\frac{\mathrm{D}\mathbf{v}}{\mathrm{D} t}=-\nabla p + \rho \mathbf{b} +
+    \eta\nabla^2{\mathbf{v}}\]
+\end{itemize}
 
 
 \section{The discovery of superfluidity}
@@ -162,5 +230,5 @@ Que métodos de resolución de EDPS usamos, que programas, resultados, prediccio
 \bibliographystyle{alpha} % Choose a style (e.g., plain, alpha, IEEEtran)
 \bibliography{bibliography} % Point to your .bib file (without extension)
 
-
 \end{document}
+
