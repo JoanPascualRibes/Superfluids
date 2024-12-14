@@ -181,7 +181,7 @@ def update(n):
     axs[1,2].streamplot(X, Y, np.transpose(v_array[n,0]), np.transpose(v_array[n,1]), density=0.6, color=speed ,  broken_streamlines=True, cmap ='jet')
     axs[2,0].streamplot(X, Y, np.transpose(vs_array[n,0]), np.transpose(vs_array[n,1]), density=0.6, color=speeds ,  broken_streamlines=True, cmap='YlGnBu')
     axs[2,1].streamplot(X, Y, np.transpose(vn_array[n,0]), np.transpose(vn_array[n,1]), density=0.6, color=speedn ,  broken_streamlines=True, cmap='YlOrBr')
-    axs[2,2].streamplot(X, Y, np.transpose(vns_array[n,0]), np.transpose(vns_array[n,1]), density=0.6, color=speedn ,  broken_streamlines=True, cmap='RdPu')
+    axs[2,2].streamplot(X, Y, np.transpose(vns_array[n,0]), np.transpose(vns_array[n,1]), density=0.6, color=speedns ,  broken_streamlines=True, cmap='RdPu')
 
     # fig.savefig(f"./snapshots/SF01_{n}.png") # Descomentar para guardar los frames
 
