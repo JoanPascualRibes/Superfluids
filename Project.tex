@@ -181,20 +181,53 @@ However, the whole fluid has viscosity, so we need the Navier-Stokes equation:
 \[
 \rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) + \rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) = -\nabla p + \eta_n \nabla^2 \mathbf{v}_n \tag{II}
 \]
+where $\eta_n$ is the viscosity of the normal component.
+\\
 
 Substracting the equation for the superfluid part (I) from the equation of the entire fluid (II) in order to isolate the hydrodynamic equation of the normal component:
 \[
 \rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) = \left( \frac{\rho_s}{\rho} - 1 \right) \nabla p - \rho_s \sigma \nabla T + \eta_n \nabla^2 \mathbf{v}_n \]
 
-Here the four unknowns are $\rho_s$, $\rho_n$, $\mathbf{v}_s$, and $\mathbf{v}_n$. Therefore, we need two more equations. One of them is the continuity equation $\partial \rho / \partial t + \nabla \cdot \mathbf{j} = 0$. Note that we impose conservation for the total mass density instead of doing it for both components separately, because of the plausible transformation between them. In addition, we can impose the entropy transport continuty equation $\partial (\rho \sigma) / \partial t = - \nabla \cdot (\rho \mathbf{v}_n)$.
+Here the four unknowns are $\rho_s$, $\rho_n$, $\mathbf{v}_s$, and $\mathbf{v}_n$. Therefore, we need two more equations. One of them is the continuity equation $\partial \rho / \partial t + \nabla \cdot \mathbf{j} = 0$, where we define $\mathbf{j} = \rho_s \mathbf{v}_s + \rho_n \mathbf{v}_n $. Note that we impose conservation for the total mass density instead of doing it for both components separately, because of the plausible transformation between them. In addition, we can impose the entropy transport continuty equation $\partial (\rho \sigma) / \partial t = - \nabla \cdot (\rho \mathbf{v}_n)$.
 
-Now wwe have closed the system of hydrodynamic equations for He-II, known as the two-fluid model:
+Now we have closed the system of hydrodynamic equations for He-II, known as the two-fluid model:
 \begin{align}
 \rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) &= -\frac{\rho_s}{\rho} \nabla p + \rho_s \sigma \nabla T,  \\
 \rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) &= -\frac{\rho_n}{\rho} \nabla p - \rho_s \sigma \nabla T + \eta_n \nabla^2 \mathbf{v}_n,  \\
 \frac{\partial (\rho_s + \rho_n)}{\partial t} &= -\nabla \cdot \mathbf{j}, \\
 \frac{\partial (\rho \sigma)}{\partial t} &= -\nabla \cdot (\rho \mathbf{v}_n). 
 \end{align}
+
+This set of equations describe (with the appropiate boundary conditions) all special properties of He-II. In order to consider external potentials, we can simply add their potential energy per unit volume to the pressure term. 
+\\
+
+Finally, it must be remarked that this model is considered phenomenological. Landau and Tisza did not work out any microscopic interpretation. \black{HAVE WE ALREADY INTRODUCED THESE NAMES?}
+
+\subsection{Fountain effect}
+
+
+One of the most fascinating phenomena presented by He-II is the fountain effect. A porous-based flask is immersed in a bath of He-II so that only the superfluid component can infiltrate the vessel. A heat source (such as a dissipative wire) is placed inside the flask. This heats the helium, causing the superfluid part to flow into the hot spot, causing the helium height to rise. This rise can reach the top of the bottle, escaping through a small hole made there, so that a fountain is observed. In short, a temperature gradient leads to a pressure head.
+\\
+
+Let's do some calculations. The pressure gradient can be extracted from equation (1) if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$) so that $\Delta p = \rho \sigma \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
+
+This effect is simulated and studied in \cite{Kincl}
+
+\subsection{Superfluid creep}
+
+This phenomenon appears when a cup is immersed in He-II and then removed from the liquid. Then, the helium inside the cup starts to rise on the inner surface of the cup, and goes down on the outside, so that it creates a layer covering the entire surface. Continuously, the fluid inside the cup travels through this coating to the bottom outside of the vessel, where droplets form and eventually drip out, emptying the vessel. In addition, the surfaces remain covered with a thin helium film after this process. The tendency of the fluid to cover the entire surface with which it comes into contact is called superfluid creep.
+\\
+
+Superfluid creep is the consequence of the property of helium to maintain capillary flow through narrow channels. With a regular fluid (such as water), a meniscus is also observed due to the adhesion of the liquid with the vessel wall. However, as this layer is very narrow, there is an impediment to viscous flow. In addition, this film is very unstable in the face of temperature variations that evaporate and destabilize it. The capillary flow capability and superb thermal conductivity of He-II allow it to avoid these restrictions. Superfluid flow is possible, allowing the two phases to rise (remember that they are inseparable).
+\\
+
+\subsection{Second sound}
+
+The phenomenon of second sound was first described by Lev Landau in 1941. \cite{LevLan}
+So far, we have described several phenomena related to the unusual heat propagation in He-II, such as the absence of boiling, the fountain effect or superfluid creep.In normal fluids, the heat equation is one of diffusion giving rise to dissipative processes in which excess heat is transported over a distance that grows with the square root of time.However, in He-II, this heat propagates as a wave, so that the distance the heat is transported is linear with time and therefore at constant velocity.The temperature wave is called the second sound.Its velocity characterizes the speed with which the helium makes the temperature gradients disappear.\\
+
+While normal sound waves are fluctuations in the density of particles in a substance, second sound waves are fluctuations in the density of quasiparticle thermal excitations, and they can be observed in every system in which momentum is conserved in most phonon-phonon collisions, like superfluids. [Srinivasan, R. Second sound. Reson 4, 16–24 (1999). https://doi.org/10.1007/BF02838720]
+
 
 
 \section{Modelo de Landau}
