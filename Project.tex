@@ -20,7 +20,11 @@
 \todo{Write abstract}
 \end{abstract}
 
-\section{Bose-Einstein condensates}
+\section{Superfluidity as a quantum phenomenon}
+
+Could quantum physics help us explain the strange behaviour of helium II?  In 1938, Fritz London proposed that Bose-Einstein condensates could be a mechanism for superfluidity.  Well, helium 4 atoms are bosons, because they are made up of an even number of fermions (2 protons, 2 neutrons and 2 electrons).  In 1924, Satyendra Nath Bose, after whom bosons are named, explored what would happen if a system of these particles was cooled to very low temperatures.  He wrote a paper on this and other things and sent it to Einstein, asking if he could translate it to German.  Einstein recognised the value...
+
+\subsection{Bose-Einstein condensates}
 
 \todo{Brief history and description of properties}
 
@@ -35,11 +39,11 @@ coincide with superfluids.
 Let us first consider a BEC where the particles form an ideal gas.  In this case we have $N$ particles that do not interact with each other.  Therefore, we can write the wave function of the system as a product of
 individual wave functions:
 \[\Psi(\mathbf{r}_1, \dots, \mathbf{r}_N) =
-    \alpha_{s_1}(\mathbf{r}_1)\dotsb\alpha_{s_N}(\mathbf{r}_N)\]
+    \varphi_{s_1}(\mathbf{r}_1)\dotsb\varphi_{s_N}(\mathbf{r}_N)\]
 This isn't entirely correct, though.  Since the particles are indistinguishable, and in particular are bosons, the wave function $\Psi$ must be symmetric.  We can amend this by symmetrizing our function:
 \[\Psi(\mathbf{r}_1, \dots, \mathbf{r}_N) \propto \sum_{\sigma}
-        \alpha_{s_1}(\mathbf{r}_{\sigma(1)})\dotsb
-        \alpha_{s_N}(\mathbf{r}_{\sigma(N)})\]
+        \varphi_{s_1}(\mathbf{r}_{\sigma(1)})\dotsb
+        \varphi_{s_N}(\mathbf{r}_{\sigma(N)})\]
 Where $\sigma$ is summed over the permutations of $N$ objects.  The proportionality factor can be determined...
 \\
 
@@ -49,12 +53,26 @@ For large $N$, the previous expression quickly becomes unwieldy and difficult to
 So let $\{\psi_\lambda\}$ be a basis of wave functions indexed by $\lambda$, which may consist of one or multiple quantum numbers.  The basis of states in second quantization are described by a set of non-negative integers $\{n_\lambda\}$ where $n_\lambda$ indicates the number of particles occupying the state $\lambda$.  If we fix the total number of particles, $N$, we require $\sum_\lambda{n_\lambda} = N$.
 \\
 
-What is the probability density of the state $\{n_\lambda\}$ at a point $\mathbf{r}$?  For every state, there are $n_\lambda$ particles in that state, and a probability density of $\psi_\lambda^*(\mathbf{r}) \psi_\lambda(\mathbf{r})$ for every particle (assuming the $\psi_\lambda$'s are normalized). So in total it will be $\rho(\mathbf{r}) = \sum_l{n_l \psi_\lambda^*(\mathbf{r}) \psi_\lambda(\mathbf{r})}$.
+What is the probability density of the state $\{n_\lambda\}$ at a point $\mathbf{r}$?  For every state, there are $n_\lambda$ particles in that state, and a probability density of $\psi_\lambda^*(\mathbf{r}) \psi_\lambda(\mathbf{r})$ for every particle (assuming the $\psi_\lambda$'s are normalized). So in total it will be $P(\mathbf{r}) = \sum_l{n_l \psi_\lambda^*(\mathbf{r}) \psi_\lambda(\mathbf{r})}$.
 \\
 
-Now our system is a Bose-Einstein condensate if it is at such a low temperature that a large number of the particles are at the ground state, i.e. $n_0 \approx N$.  In this case, $\rho(\mathbf{r})$ is determined mostly by the component $n_0\psi^*_0\psi_0$, and the others are small fluctuations which vanish as the temperature approaches $0$.  If we define $\Psi_0(\mathbf{r}) = \sqrt{n_0} \psi_0$, then the BEC is described in large part as if it were a single-particle system; thus, $\Psi_0$ is called the \textbf{macroscopic wave function}.
+Now our system is a Bose-Einstein condensate if it is a low enough temperature that a large number of the particles are at the ground state, i.e. $n_0 \approx N$.  This point is called the \textbf{critical temperature} of the condensate.  In this case, $P(\mathbf{r})$ is determined mostly by the component $n_0\psi^*_0\psi_0$, and the others are small fluctuations which vanish as the temperature approaches $0$.  If we define $\Psi_0(\mathbf{r}) = \sqrt{n_0} \psi_0$, then the BEC is described in large part as if it were a single-particle system; thus, $\Psi_0$ is called the \textbf{macroscopic wave function}.
 
-\todo{Mention interacting BECs / Dynamics / How superfluids tie in to this}
+\subsection{Interacting BEC}
+
+So far we have only been considering an ideal Bose gas with no interactions.  In reality, the bosons do interact with each other.  In 1956, Oliver Penrose and Lars Onsager proposed a criterion for when BEC occurs in general Bose gases.  Essentially, it so happens that similar to the occupation numbers $n_\lambda$ and the basis functions $\psi_\lambda$, one can define a certain series of numbers $\alpha_\lambda$ and functions $\phi_\lambda$ that are eigenvalues and eigenfunctions of an operator, and that they coincide with the $n_\lambda$'s and the $\psi_\lambda$'s for an ideal Bose gas.  The Penrose-Onsager criterion, then, is that $\alpha_0$ is close to $N$.  In this case, the macroscopic wave function is $\sqrt{\alpha_0} \phi_0$. 
+
+\subsection{Superfluid, microscopically}
+
+The superfluid is a many-particle system which similar to a BEC is at a low temperature.  Each individual particle may oscillate between different states, but at any one moment, most of them are in the ground state.  In a similar way that a macroscopic description of fluid dynamics treats the fluids like continuous substances with a velocity and density defined at each point, it is natural to describe the superfluid macroscopically by having two velocities and two densities associated with the macroscopic wave function, on the one hand, and the thermal fluctuations, on the other.  Notice, however, how we are not saying that a superfluid has two components, one superfluid and one normal that move independently, but rather that it moves with two flows, one coherent and inviscid and the other with viscosity.
+
+\subsection{Dynamics of BEC}
+
+From the Hamiltonian of the system and assuming that the interaction potential between atoms is a contact potential (i.e. proportional to $\delta(\mathbf{r}-\mathbf{r}')$ with $\delta$ the Dirac delta), physicists Eugene Gross and Lev Pitaevskii deduced a dynamic equation for BECs called the \textbf{Gross-Pitaevskii equation} or the non-linear Schrödinger equation:
+
+\[-\frac{\hbar}{2m}\nabla^2\Psi+V\Psi+\frac{4\pi\hbar^2a}{m}|\Psi|^2\Psi=i\hbar \frac{\partial \Psi}{\partial t}\]
+
+Where $\Psi$ is the macroscopic wave function, $V$ is an external potential and $a$ is a parameter that represents the strength of the contact potential.
 
 \section{Fluid dynamics}
 The classical theory of fluid dynamics generally assumes that the fluid is
