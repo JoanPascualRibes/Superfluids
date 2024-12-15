@@ -81,10 +81,12 @@ A glance at the specific heat curve of helium shows that the $\lambda$-anomaly d
 There are numerous other instances of such $\lambda$-type specific heat anomalies beside liquid helium. The thermal anomaly at the ferromagnetic Curie point of the metals of the iron group is probably the best known example. 
 
 <img src="https://github.com/user-attachments/assets/12723744-613b-49a3-9121-66a69407fb72" width="500" height="500"> 
+https://www.researchgate.net/figure/Specific-heat-as-a-function-of-temperature-showing-the-peak-at-the-Curie-point-and-the_fig1_235575588
 
 Other examples are the specific heat singularities of certain binary alloys, e.g. $\beta$-brass (50% Zn-Cu alloy), or other substances such as methane, ammonium chloride and hycrocloric acid.
 
 ![image](https://github.com/user-attachments/assets/3aa0721c-ff4c-4acc-9121-1703e00d8c6e)
+https://www.researchgate.net/figure/NH4Cl-a-suite-of-experimental-results-for-ammonium-chloride-a-Specific-heat-as-a_fig5_7071790
 
 These anomalies are by no means particularly rare phenomena. Many of them are now qualitatively quite well understood. They ussually occur whenever some type of order is gradually destroyed with rising temperature, until, at some well-defined "transition temperature" the last vestige of this order disappears. 
 
