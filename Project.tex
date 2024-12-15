@@ -188,12 +188,12 @@ We have used the well-known definition of Gibbs energy and the relation:
 \[G = VP - ST - TS = \mu N\]
 
 Therefore, writing 
-\[\rho = (Nm)/V \qquad \sigma = \frac{S}{mN}\]
+\[\rho = (Nm)/V \qquad s = \frac{S}{mN}\]
 We finally have
-\[\nabla \mu = \frac{m}{\rho} \nabla \rho - m \sigma \nabla T\]
+\[\nabla \mu = \frac{m}{\rho} \nabla \rho - m s \nabla T\]
 Now, by direct substitution:
 
-\[\frac{\partial \mathbf{v_s}}{\partial t} + (\mathbf{v_s}\cdot \mathbf{\nabla})\mathbf{v_s} = -\frac{1}{\rho}\nabla p + \sigma \nabla T \tag{I}\]
+\[\frac{\partial \mathbf{v_s}}{\partial t} + (\mathbf{v_s}\cdot \mathbf{\nabla})\mathbf{v_s} = -\frac{1}{\rho}\nabla p + s \nabla T \tag{I}\]
 
 However, the whole fluid has viscosity, so we need the Navier-Stokes equation:
 \[
@@ -204,16 +204,16 @@ where $\eta_n$ is the viscosity of the normal component.
 
 Substracting the equation for the superfluid part (I) from the equation of the entire fluid (II) in order to isolate the hydrodynamic equation of the normal component:
 \[
-\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) = \left( \frac{\rho_s}{\rho} - 1 \right) \nabla p - \rho_s \sigma \nabla T + \eta_n \nabla^2 \mathbf{v}_n \]
+\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) = \left( \frac{\rho_s}{\rho} - 1 \right) \nabla p - \rho_s s \nabla T + \eta_n \nabla^2 \mathbf{v}_n \]
 
-Here the four unknowns are $\rho_s$, $\rho_n$, $\mathbf{v}_s$, and $\mathbf{v}_n$. Therefore, we need two more equations. One of them is the continuity equation $\partial \rho / \partial t + \nabla \cdot \mathbf{j} = 0$, where we define $\mathbf{j} = \rho_s \mathbf{v}_s + \rho_n \mathbf{v}_n $. Note that we impose conservation for the total mass density instead of doing it for both components separately, because of the plausible transformation between them. In addition, we can impose the entropy transport continuty equation $\partial (\rho \sigma) / \partial t = - \nabla \cdot (\rho \mathbf{v}_n)$.
+Here the four unknowns are $\rho_s$, $\rho_n$, $\mathbf{v}_s$, and $\mathbf{v}_n$. Therefore, we need two more equations. One of them is the continuity equation $\partial \rho / \partial t + \nabla \cdot \mathbf{j} = 0$, where we define $\mathbf{j} = \rho_s \mathbf{v}_s + \rho_n \mathbf{v}_n $. Note that we impose conservation for the total mass density instead of doing it for both components separately, because of the plausible transformation between them. In addition, we can impose the entropy transport continuty equation $\partial (\rho s) / \partial t = - \nabla \cdot (\rho \mathbf{v}_n)$.
 
 Now we have closed the system of hydrodynamic equations for He-II, known as the two-fluid model:
 \begin{align}
-\rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) &= -\frac{\rho_s}{\rho} \nabla p + \rho_s \sigma \nabla T,  \\
-\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) &= -\frac{\rho_n}{\rho} \nabla p - \rho_s \sigma \nabla T + \eta_n \nabla^2 \mathbf{v}_n,  \\
+\rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) &= -\frac{\rho_s}{\rho} \nabla p + \rho_s s \nabla T,  \\
+\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) &= -\frac{\rho_n}{\rho} \nabla p - \rho_s s \nabla T + \eta_n \nabla^2 \mathbf{v}_n,  \\
 \frac{\partial (\rho_s + \rho_n)}{\partial t} &= -\nabla \cdot \mathbf{j}, \\
-\frac{\partial (\rho \sigma)}{\partial t} &= -\nabla \cdot (\rho \mathbf{v}_n). 
+\frac{\partial (\rho s)}{\partial t} &= -\nabla \cdot (\rho \mathbf{v}_n). 
 \end{align}
 
 This set of equations describe (with the appropiate boundary conditions) all special properties of He-II. In order to consider external potentials, we can simply add their potential energy per unit volume to the pressure term. 
@@ -227,7 +227,7 @@ Finally, it must be remarked that this model is considered phenomenological. Lan
 One of the most fascinating phenomena presented by He-II is the fountain effect. A porous-based flask is immersed in a bath of He-II so that only the superfluid component can infiltrate the vessel. A heat source (such as a dissipative wire) is placed inside the flask. This heats the helium, causing the superfluid part to flow into the hot spot, causing the helium height to rise. This rise can reach the top of the bottle, escaping through a small hole made there, so that a fountain is observed. In short, a temperature gradient leads to a pressure head.
 \\
 
-Let's do some calculations. The pressure gradient can be extracted from equation (1) if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$) so that $\Delta p = \rho \sigma \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
+Let's do some calculations. The pressure gradient can be extracted from equation (1) if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$) so that $\Delta p = \rho s \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
 
 This effect is simulated and studied in \cite{Kincl}
 
