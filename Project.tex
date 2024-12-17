@@ -267,8 +267,9 @@ have here no real division of the particles of the liquid into ‘superfluid’
 and ‘normal’ ones.”
 
 
-\section{Nuestra simulación}
+\section{Our simulation}
 % Que métodos de resolución de EDPS usamos, que programas, resultados, predicciones.
+\subsection{The model}
 Our model consists of the following four equations:
 \begin{align}
 \frac{D\rho}{Dt} &= -\rho \nabla \cdot \mathbf{v}, \\
@@ -289,6 +290,40 @@ is the dissipative power.
 The coflow velocity \(\mathbf{v}\) and counterflow velocity \( \mathbf{v_ns}\) satisfy the following relations:
 \[\mathbf{v} = \chi_n \mathbf{v_n} + \chi_s \mathbf{v_s}\]
 \[\mathbf{v_{ns}}  = \mathbf{v_n} - \mathbf{v_s}\]
+The eqautions of the model contain convective derivatives with respect to the overall coflow velocity
+\[\frac{D\phi}{Dt} := \frac{\partial \phi}{\partial t} + v \cdot \nabla \phi\]
+This is the difference with respect to the Landau-Tisa model where the superfluid velocity is convected only by itself and not by the whole coflow velocity.
+
+Closing the sitem of equations, requires the knowledge of functions \(p\), \(T\), and \(\chi_n\).
+Sice the temperature gradient si small, we can use a linearized model, wich is valid in a vicinity of a referential temperature \(T_0\).
+\begin{align}
+    \chi_n &= \chi_{n0} + \chi'(s-s_0),\\
+    \chi_s &= \chi_{s0} - \chi'(s-s_0),\\
+    p &= u_1^2(\rho-\rho_0), \\
+    T &= (1+\frac{s-s_0}{C})T_0,
+\end{align}
+Where \(\chi', \chi_{n0}, \chi_{s0}, s_0, \rho_0, u_1 \text{ and } C\) are constant values at \(T_0\) being 
+\(u_1\) the speed of sound and \(C\) the heat capacity. 
+
+The speed of the second sound \(u_2\) is related to these values by:
+\[u_2^2 = \frac{\chi_{s0}T_0s_0^2}{\chi_{n0}C}\]
+\subsection{Method}
+A spectral method disctritizes functions by expanding them over a set of basis functions.
+Project dedalus is a flexible framework for spectrally solving differential equations. We used tis framework to spectrally solve the equatioons of our model over periodic 2D space.
+
+We begin defining the domain of our problem, since we won't be imposing boundary conditions, our domain is defind with 2D cartesian coordinates over real forier basis.
+Next, we daine the fields for the variables of our problem \(\rho, s, \mathbf{v}, \mathbf{v_s}\) and the constans \(\chi', \chi_{n0}, \chi_{s0}, s_0, \rho_0, u_1, C \text{ and } T_0\).
+Then, we define our initial value problem and the necessary substitutions to compute the operations of our model.
+Next we add the equations of the model ant set the initial conditions. 
+Finally, we build our solver, iterate for a certain simultaion time and plot the results.
+
+\subsection{Simulations}
+In this first simulation we aim to obsetrve the first and second sound and compare their velocities.
+We found that if we set the initial velocity to \(mathbf{v} = (e^{-10x^2}, 0)\) a density and an entropy gradient is generated at he \(x=0\) line. 
+As the simualation andvances, we can clearly see how the density wave traveels faster than the entropy wave.
+
+In the next two simulations we will explore what happens when we add a preturbation tho the density or entropy field.
+If we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\)
 
 \section{Conclusión}
 
