@@ -1,7 +1,16 @@
 \documentclass{article}
-\usepackage{amscd,amssymb,amsmath,latexsym,graphicx,epsfig,color,url,todonotes,geometry}
-\geometry{margin=1.3in}
+\usepackage{amscd,amssymb,amsmath,latexsym,graphicx,epsfig,color,url,todonotes}
 \usepackage{graphicx} % Required for inserting images
+
+\usepackage[utf8]{inputenc}
+\usepackage{subcaption}
+\usepackage{geometry}
+\geometry{margin=1.3in}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{siunitx}
 
 \newcommand{\red}{\textcolor{red}}
 \newcommand{\blue}{\textcolor{blue}}
@@ -35,18 +44,18 @@ On the contrary, according to quantum theory, the most stable state of any syste
 The existence of superfluid and in particular the strange transfer mechanism they exhibit are direct indications that they represent macroscopic system with some quantum properties as at these temperatures, the mean thermal (kinetic) energy becomes so small that the mean de-Broglie wavelength $\lambda = h/p$ assumes a value of the order of the minimum molecular distance. And so, the classical theory is incompetent and that presumably quantum mechanisms are relevant to their constitution as a whole.
 \\
 
-In 1908 Kamerlingh Onnes liquefied helium for the first time at a critical temperature of 5.2ºK, and as the temperature was lowered, he found that when the liquid is cooled below 2.2ºK it starts expanding instead of continuing to contract, thus deviating from the behaviour of more substances.
+In 1908 Kamerlingh Onnes liquefied helium for the first time at a critical temperature of 5.2 K, and as the temperature was lowered, he found that when the liquid is cooled below 2.2 K it starts expanding instead of continuing to contract, thus deviating from the behaviour of more substances.
 As years passed and more experiments were done as the technics improved, in 1924 Onnes and Boks found that the density as a function of temperature has a sharp maximum with a discontinuity of its slope at that temperature, emphasizing that some kind of transformation was occurring around this temperature.
 \\
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.62\linewidth]{Density.png}
+    \includegraphics[width=0.62\linewidth]{Images/Density.png}
     \caption{Density of liquid helium as a function of temperature.}
     \label{fig:enter-label}
 \end{figure}
 
-This phenomenon led to Keesom and Wolk in 1928 define the terminology "helium I" and "helium II",
+This phenomenon led to Keesom and Wolk in 1928 define the terminology ``helium I'' and ``helium II'',
 for the heater and cooler states respectively,
 suggesting the idea of a kind of allotropic modification.
 
@@ -54,12 +63,12 @@ But in contrast to ordinary phase transitions, the transition from helium II to 
 \\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.62\linewidth]{LambdaCp.png}
+    \includegraphics[width=0.62\linewidth]{Images/LambdaCp.png}
     \caption{Specific heat of liquid helium under its own vapor pressure.}
     \label{fig:enter-label}
 \end{figure}
 
-Lambda-point occur in many substances. Consist in transitions of second order which are characterized by vanishing latent heat and the above-mentioned sort of singularity of specific heat. They usually occur whenever some type of order is gradually destroyed with rising temperature, until, at some well-defined "transition temperature" the last vestige of this order disappears. A very well studied example of this anomaly is the ferromagnetic Curie point of the metals of the iron group.
+Lambda-point occur in many substances. Consist in transitions of second order which are characterized by vanishing latent heat and the above-mentioned sort of singularity of specific heat. They usually occur whenever some type of order is gradually destroyed with rising temperature, until, at some well-defined ``transition temperature'' the last vestige of this order disappears. A very well studied example of this anomaly is the ferromagnetic Curie point of the metals of the iron group.
 \\
 
 \begin{figure}[H]
@@ -67,13 +76,13 @@ Lambda-point occur in many substances. Consist in transitions of second order wh
     \begin{tabular}{cc}
         \begin{subfigure}{0.5\textwidth}
             \centering
-            \includegraphics[width=\linewidth]{CuriePoint.png}
+            \includegraphics[width=\linewidth]{Images/CuriePoint.png}
             \caption{Specific heat as a function of temperature showing the peak at the Curie point.}
             \label{fig:enter-label}
         \end{subfigure} &
         \begin{subfigure}{0.5\textwidth}
             \centering
-            \includegraphics[width=\linewidth]{AmmoniumChloride.png}
+            \includegraphics[width=\linewidth]{Images/AmmoniumChloride.png}
             \caption{Several experiments on NH4Cl showing discontinuity on the slope of various thermodynamic magnitudes.}
             \label{fig:enter-label}
         \end{subfigure}
@@ -84,7 +93,7 @@ Lambda-point occur in many substances. Consist in transitions of second order wh
 However, the classical example of the $\lambda$-point of liquid helium does not seem to admit an explanation in terms of any mechanism of this kind; the helium atoms are just too symmetrical to achieve an order-disorder transition, say, by virtue of an orientation like that of the $NH_4$ tetrahedra of the ferromagnetic dipole alignment. Nor can a pure substances like helium establish anything like the type or order of binary alloys. Liquid helium seems to be too simple to have a $\lambda$-point!
 \\
 
-By examining the phase diagram on P-T plane, we can observe more conspicuous properties. Probably the most striking one might be the absence of a triple point between the solid, liquid and gaseous states. Instead are actually two triple points, at the ends of the λ-line which separates liquid He I from He II.
+By examining the phase diagram on P-T plane, we can observe more conspicuous properties. Probably the most striking one might be the absence of a triple point between the solid, liquid and gaseous states. Instead are actually two triple points, at the ends of the $\lambda$-line which separates liquid He I from He II\@.
 \\
 
 In addition, another peculiarity is that melting curve seem to approach T = 0 at a pressure of about 25 atm flattening in a asymptotic way. From the Clausius-Clapeyron equation $dP_m / dT =(S_{liq}-S_{sol})/(V_{liq}-V_{sol})$ where $P_m$ is the melting pressure curve, it follow that at 1ºK the entropy of the liquid must be practically equal to entropy of the solid, as $dP_m / dT = 0 \implies \Delta S = 0 \implies S_{liq}=S_{sol}$.
@@ -94,7 +103,7 @@ Hence it seem as if between 2.2ºK and 1ºK liquid helium loses all entropy char
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{PhaseDiagr.png}
+    \includegraphics[width=0.75\linewidth]{Images/PhaseDiagr.png}
     \caption{Allocation of the four states of helium in the P-T plane}
     \label{fig:enter-label}
 \end{figure}
@@ -134,13 +143,13 @@ $\rho_{liq} \approx 800 \rho_{vap}$
     \begin{tabular}{cc}
         \begin{subfigure}{0.5\textwidth}
             \centering
-            \includegraphics[width=\linewidth]{Viscosity.png}
+            \includegraphics[width=\linewidth]{Images/Viscosity.png}
             \caption{Viscosity of gaseous and liquid helium and of gaseous and liquid hydrogen as function of temperature.}
             \label{fig:enter-label}
         \end{subfigure} &
         \begin{subfigure}{0.5\textwidth}
             \centering
-            \includegraphics[width=\linewidth]{waterVis.png}
+            \includegraphics[width=\linewidth]{Images/waterVis.png}
             \caption{Viscosity of water as a function of temperature.}
             \label{fig:enter-label}
         \end{subfigure}
@@ -196,7 +205,7 @@ So far we have only been considering an ideal Bose gas with no interactions.  In
 
 \subsection{Dynamics of BEC}
 
-Physicists Eugene Gross and Lev Pitaevskii deduced an equation that governs the macroscopic wave function of a pure condensate, that is, at $T = 0$.  In this idealized system, the interaction between atoms is a contact potential (i.e. proportional to $\delta(\mathbf{r}-\mathbf{r}')$ with $\delta$ the Dirac delta). It is called the \textbf{Gross-Pitaevskii equation} or the non-linear Schrödinger equation:
+Physicists Eugene Gross and Lev Pitaevskii deduced an equation that governs the macroscopic wave function of a pure condensate, that is, at $T = 0$.  In this idealized system, the interaction between atoms is a contact potential (i.e.\ proportional to $\delta(\mathbf{r}-\mathbf{r}')$ with $\delta$ the Dirac delta). It is called the \textbf{Gross-Pitaevskii equation} or the non-linear Schrödinger equation:
 
 \[-\frac{\hbar}{2m}\nabla^2\Psi+V\Psi+\frac{4\pi\hbar^2a}{m}|\Psi|^2\Psi=i\hbar \frac{\partial \Psi}{\partial t}\]
 
@@ -298,7 +307,7 @@ It should be emphasized that the fraction of each component is a function of tem
 
 \subsection{Equations of superfluids}
 
-The main objective of this section is to find the correct equations for both components of Helium-II.
+The main objective of this section is to find the correct equations for both components of Helium-II\@.
 
 Given the two components of Helium-II, we can also separate the current density:
 \[\mathbf{j} = \rho_s \mathbf{v_s}+\rho_n \mathbf{v_n}\text{.}\]
@@ -322,7 +331,7 @@ Where $\mu$ is the chemical potential, which we derive thermodynamically as foll
 
 Where $N$ is the number of particles. In a differential form:
 
-\[N d\mu(p, Y) = \frac{\partial G}{\partial p} \bigg|_T + \frac{\partial G}{\partial T}\bigg|_pdT = Vdp - S dT\]
+\[N d\mu(p, Y) = \frac{\partial G}{\partial p} \bigg|_T + \frac{\partial G}{\partial T}\bigg|_p dT = Vdp - S dT\]
 
 We have used the well-known definition of Gibbs energy and the relation:
 \[G = VP - ST - TS = \mu N\]
@@ -356,7 +365,7 @@ Now we have closed the system of hydrodynamic equations for He-II, known as the 
 \frac{\partial (\rho s)}{\partial t} &= -\nabla \cdot (\rho \mathbf{v}_n). 
 \end{align}
 
-This set of equations describe (with the appropriate boundary conditions) all special properties of He-II. In order to consider external potentials, we can simply add their potential energy per unit volume to the pressure term. 
+This set of equations describe (with the appropriate boundary conditions) all special properties of He-II\@. In order to consider external potentials, we can simply add their potential energy per unit volume to the pressure term. 
 \\
 
 Finally, it must be remarked that this model is considered phenomenological. Landau and Tisza did not work out any microscopic interpretation. \todo{HAVE WE ALREADY INTRODUCED THESE NAMES?}
@@ -369,7 +378,7 @@ Finally, it must be remarked that this model is considered phenomenological. Lan
 One of the most fascinating phenomena presented by He-II is the fountain effect. A porous-based flask is immersed in a bath of He-II so that only the superfluid component can infiltrate the vessel. A heat source (such as a dissipative wire) is placed inside the flask. This heats the helium, causing the superfluid part to flow into the hot spot, causing the helium height to rise. This rise can reach the top of the bottle, escaping through a small hole made there, so that a fountain is observed. In short, a temperature gradient leads to a pressure head.
 \\
 
-Let's do some calculations. The pressure gradient can be extracted from equation (1) if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$) so that $\Delta p = \rho s \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
+Let's do some calculations. The pressure gradient can be extracted from equation (1) if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$ so that $\Delta p = \rho s \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
 
 This effect is simulated and studied in \cite{Kincl}
 
@@ -486,7 +495,7 @@ In simulation 2 we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\) and
     \label{sim2_start}
 \end{figure}
 
-In figure \ref{sim2} we observe two waves in the entropy field, one that follows the wave in the density field, and another one that falls behind.
+In figure~\ref{sim2} we observe two waves in the entropy field, one that follows the wave in the density field, and another one that falls behind.
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth/3]{Sim 2/SF02_0020.png}
