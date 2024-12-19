@@ -12,7 +12,8 @@
 \usepackage{mathrsfs}
 \usepackage{enumitem}
 \usepackage{siunitx}
-\usepackage{mhchem} % Quimica nooooo
+\usepackage[version=4]{mhchem} 
+
 
 \newcommand{\red}{\textcolor{red}}
 \newcommand{\blue}{\textcolor{blue}}
@@ -21,7 +22,7 @@
 
 \newcommand{\Res}{\operatorname{Res}}
 \title{Superfluids}
-\author{Eloi Estèvez \and Eki González \and Joan Pascual \and Timothy David Skipper}
+\author{Eloi Estèvez \and Eki González \and Joan Pascual \and Timothy Skipper}
 \date{\today}
 
 \begin{document}
@@ -29,146 +30,19 @@
 \maketitle
 \begin{abstract}
 \todo{Write abstract}
-We look at superfluids
+% We look at superfluid helium, how it was discovered and some of its major properties.  Quantum physics helps us explain these phenomena through Bose-Einstein condensation.  We build a superfluid simulation and draw conclusions.
+
+We make an introduction to the superfluidity phenomenon, focusing on the particular case of helium-II, dealing with the basics of Bose-Einstein condensation for a better understanding. We comment and justify the unique properties of He-II, by performing our own simulation of the superfluid in which we observe some of these behaviors and drawing conclusions.
+
+\todo{Portada guay?}
+
+\listoftodos[To-dos]
+
 \end{abstract}
-
-\tableofcontents
 \newpage
-
-\section{Eki Parte}
-%%NO CONSIGO PONER EL LATEX EN EL VISUAL, ASI QUE DE MOMENTO LO DEJO ASÍ Y DESPUES DE QuÍMICA SE SIGUE INTENTANDO 
-
-According to the classical theory of matter, at sufficiently low temperatures any system formed of identical particles confined to a given volume should come to rest, as the average kinetic energy continues to decline. Presumably be closed-packed lattice.
-
-
-On the contrary, according to quantum theory, the most stable state of any system is given by minimum of the energy integral over all configuration states. In such a way, it is a kind of kinetic equilibrium for so-called zero point motion characterized by the minimum average Total (potential + kinetic) energy under the supplementary connection of Heisenberg inequality.
-\\
-
-The existence of superfluid and in particular the strange transfer mechanism they exhibit are direct indications that they represent macroscopic system with some quantum properties as at these temperatures, the mean thermal (kinetic) energy becomes so small that the mean de-Broglie wavelength $\lambda = h/p$ assumes a value of the order of the minimum molecular distance. And so, the classical theory is incompetent and that presumably quantum mechanisms are relevant to their constitution as a whole.
-\\
-
-In 1908 Kamerlingh Onnes liquefied helium for the first time at a critical temperature of 5.2 K, and as the temperature was lowered, he found that when the liquid is cooled below 2.2 K it starts expanding instead of continuing to contract, thus deviating from the behavior of more substances.
-As years passed and more experiments were done as the technics improved, in 1924 Onnes and Boks found that the density as a function of temperature has a sharp maximum with a discontinuity of its slope at that temperature, emphasizing that some kind of transformation was occurring around this temperature.
-\\
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.62\linewidth]{Images/Density.png}
-    \caption{Density of liquid helium as a function of temperature.}
-    \label{fig:enter-label}
-\end{figure}
-
-This phenomenon led to Keesom and Wolk in 1928 define the terminology ``helium I'' and ``helium II'',
-for the heater and cooler states respectively,
-suggesting the idea of a kind of allotropic modification.
-
-But in contrast to ordinary phase transitions, the transition from helium II to helium I was shown to not be accompanied by a latent heat. Later on, in 1932 specific heat measurements by Keesom and Clausius showed a singularity of the specific heat curve with a characteristic profile, resembling the shape of the letter lambda, and so giving rise to the name $\lambda$-point.
-\\
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.62\linewidth]{Images/LambdaCp.png}
-    \caption{Specific heat of liquid helium under its own vapor pressure.}
-    \label{fig:enter-label}
-\end{figure}
-
-The lambda-point occurs in many substances. Consist in transitions of second order which are characterized by vanishing latent heat and the above-mentioned sort of singularity of specific heat. They usually occur whenever some type of order is gradually destroyed with rising temperature, until, at some well-defined ``transition temperature'' the last vestige of this order disappears. A very well studied example of this anomaly is the ferromagnetic Curie point of the metals of the iron group.
-\\
-
-\begin{figure}[H]
-    \centering
-    \begin{tabular}{cc}
-        \begin{subfigure}{0.5\textwidth}
-            \centering
-            \includegraphics[width=\linewidth]{Images/CuriePoint.png}
-            \caption{Specific heat as a function of temperature showing the peak at the Curie point.}
-            \label{fig:enter-label}
-        \end{subfigure} &
-        \begin{subfigure}{0.5\textwidth}
-            \centering
-            \includegraphics[width=\linewidth]{Images/AmmoniumChloride.png}
-            \caption{Several experiments on \ce{NH4Cl} showing discontinuity on the slope of various thermodynamic magnitudes.}
-            \label{fig:enter-label}
-        \end{subfigure}
-   
-    \end{tabular}
-\end{figure}
-
-However, the classical example of the $\lambda$-point of liquid helium does not seem to admit an explanation in terms of any mechanism of this kind; the helium atoms are just too symmetrical to achieve an order-disorder transition, say, by virtue of an orientation like that of the \ce{NH_4} tetrahedra of the ferromagnetic dipole alignment. Nor can a pure substances like helium establish anything like the type or order of binary alloys. Liquid helium seems to be too simple to have a $\lambda$-point!
-\\
-
-By examining the phase diagram on P-T plane, we can observe more conspicuous properties. Probably the most striking one might be the absence of a triple point between the solid, liquid and gaseous states. Instead are actually two triple points, at the ends of the $\lambda$-line which separates liquid \ce{He} I from \ce{He} II\@.
-\\
-
-In addition, another peculiarity is that melting curve seem to approach $T = 0$ at a pressure of about 25 atm flattening in a asymptotic way. From the Clausius-Clapeyron equation $dP_m / dT =(S_{liq}-S_{sol})/(V_{liq}-V_{sol})$ where $P_m$ is the melting pressure curve, it follows that at 1 K the entropy of the liquid must be practically equal to entropy of the solid, as $dP_m / dT = 0 \implies \Delta S = 0 \implies S_{liq}=S_{sol}$.
-
-Hence it seems as if between 2.2 K and 1 K liquid helium loses all entropy characteristic of the disorder of the ordinary liquid state.
-\\
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{Images/PhaseDiagr.png}
-    \caption{Allocation of the four states of helium in the P-T plane}
-    \label{fig:enter-label}
-\end{figure}
-
-Solid helium cannot be melted isothermally by supplying heat to the system, since there is no heat of melting. Close to absolute zero, solidification and melting are purely mechanical processes as no entropy change is involved in this transition.
-
-At absolute zero, where the system is in its lowest (single) quantum state, melting must then consist in an adiabatic transformation of this quantum state. Even at finite temperatures, at which liquid helium II has some entropy, there is a very peculiar transfer process by which at least a part of the liquid can slip through the finest cracks and extremely narrow slits and capillaries, which for normal liquids are, in effect, impassable. This apparent zero-viscosity is referred to as superfluidity.
-\\
-
-However, in other experiments, such as measuring the torque of a rotating disk submerged in a tank of liquid helium, proved the existence of a non-zero viscosity, contradicting the results of the capillary flow.
-\\
-
-We could try to interpret this nested behavior as a solid with such a high molecular volume that actually can flow.
-
-But, as might be expected, the reality is more convoluted. This system does not represent a liquid in the ordinary sense. There are no potential barriers as in ordinary liquid to overcome when an external stress is applied. In this respect there seem to be a greater similarity to a gas than we are used to assume in ordinary liquids. This view is supported by the extremely significant fact that liquid helium I, which on first sight appears to be quite an ordinary viscous liquid, actually has a viscosity of a type ordinarily found only in gases and not in liquids.
-\\
-
-In ordinary liquids the momentum transport proceeds over obstacles presumably formed by the interlocking force field of neighboring molecules. This can be derived from the fact that the viscosity of normal liquids has a large negative temperature coefficient, indicating that the passage of molecules between their neighbors is greatly aided by thermal excitation. $\eta_{liquid}\sim e^{A/RT}$ where $A$ is the activation energy.
-
-This liquid-type or dynamic viscosity is characteristically different from the gas-type or kinetic viscosity. In a gas the transport of momentum proceeds unhindered over the mean free path. It is proportional to the average momentum the molecules and thus proportional to square root of the temperature. $\eta_{gas} \sim \rho \overline{\nu} l \sim \sqrt{T}$ where $\overline{\nu} =$ average molecular velocity, $l=$ mean free path, $\rho=$ density. According to this formula the viscosity of a gas increases with temperature.
-\\
-
-As shown in the figure, the temperature coefficient of liquid He I is clearly positive and, hence, of the type usually shown only by gases. The viscosity of the liquid is only about three times as large as that vapor, although its density is larger by a factor of 800: $\eta_{\text{He gas}} = 0.8\times 10^{-5} \text{ poise} \quad \eta_{\text{He I}} = 2.5\times 10^{-5} \text{ poise}$.
-\\
-
-$\eta_{liq} \approx 3 \eta_{vap}$
-\\
-
-$\rho_{liq} \approx 800 \rho_{vap}$
-\\
-
-
-
-
-\begin{figure}[H]
-    \centering
-    \begin{tabular}{cc}
-        \begin{subfigure}{0.5\textwidth}
-            \centering
-            \includegraphics[width=\linewidth]{Images/Viscosity.png}
-            \caption{Viscosity of gaseous and liquid helium and of gaseous and liquid hydrogen as function of temperature.}
-            \label{fig:enter-label}
-        \end{subfigure} &
-        \begin{subfigure}{0.5\textwidth}
-            \centering
-            \includegraphics[width=\linewidth]{Images/waterVis.png}
-            \caption{Viscosity of water as a function of temperature.}
-            \label{fig:enter-label}
-        \end{subfigure}
-   
-    \end{tabular}
-\end{figure}
-
-Because of this exceptional large molar volume, liquid helium under low pressure might reasonably be contemplated from a point of view that emphasizes, more than in usual with other liquids, a similarity to a gas. Only under sufficiently high pressure does liquid helium I behave like an ordinary liquid.
-\\
-
-It appears as some aspects of liquid helium can be qualitatively explained by some classical models, but by putting the pieces together, nothing more than a paradoxical, counter-intuitive chimera is obtained. 
+\tableofcontents
 
 \section{Bose-Einstein condensates}
-
-\todo{Quitar este párrafo si ponemos esta sección al inicio}
-Could quantum physics help us explain the strange behavior of helium II\@?  In 1938, Fritz London proposed that Bose-Einstein condensates could be a mechanism for superfluidity.  This makes sense since helium 4 atoms are bosons: they are made up of an even number of fermions (2 protons, 2 neutrons and 2 electrons).  In 1924 Satyendra Nath Bose was the first to study these types of particles and their statistical behavior.  Among other things, he considered the possibility of cooling down such a system to very low temperatures, and sent his work to Einstein for translation.  Einstein recognized the value of his efforts and agreed to translate the paper to German, and further made his own contributions.
 
 Before even talking about superfluids, we begin by investigating a quantum phenomenon called Bose-Einstein condensation.  In essence,
 a Bose-Einstein condensate is a many-particle system which, due to certain
@@ -223,11 +97,11 @@ The fraction of particles in the ground state, $n_0/N$ can be determined statist
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Images/CondensateFraction.png}
-    \caption{The condensate fraction of trapped rubidium atoms as a function of the temperature.  The solid line shows the theoretical prediction, and the points represent the experimental data. Source: J. Ensher et al., Phys. Rev. Lett. 77, 4984 (1996).}
+    \caption{The condensate fraction of trapped rubidium atoms as a function of the temperature.  The solid line shows the theoretical prediction, and the points represent the experimental data. Source: \cite{Ensher}}
     \label{fig:enter-label}
 \end{figure}
 
-A very striking property of BECs and also of superfluids is quantum vorticity.  Take a superfluid at rest, and start rotating it, slowly accelerating.  At first the liquid will simply stay at rest and not move at all. When a certain critical velocity is exceeded, small tornadoes will be visible in the fluid: these are the quantum vortices.
+A very striking property of BECs and also of superfluids is \textbf{quantum vorticity}.  Take a superfluid at rest, and start rotating it, slowly accelerating.  At first the liquid will simply stay at rest and not move at all. When a certain critical velocity is exceeded, small tornadoes will be visible in the fluid: these are the quantum vortices.
 \\
 
 Later we will see that the superfluid is irrotational.  Isn't this a contradiction with quantum vortices? No, because when a vortex appears, a `hole' appears in the macroscopic wave function, and the circulation of the velocity, $\kappa = \oint_C{\mathbf{v}}$ around the hole is non-zero (Stokes' theorem cannot be applied).  Quantum vorticity means that $\kappa$ is discrete, and in particular a multiple of $h/m$.
@@ -241,7 +115,7 @@ Physicists Eugene Gross and Lev Pitaevskii deduced an equation that governs the 
 Where $\Psi$ is the macroscopic wave function, $V$ is an external potential and $a$ is a parameter that represents the strength of the contact potential.
 \\
 
-For temperatures above zero, but not too close to $T_C$, one can make the approximation that the system behaves as a condensate plus an ideal gas that fluctuates, with what are called Bogoliubov excitations.
+For temperatures above zero, but not too close to $T_C$, one can make the approximation that the system behaves as a condensate plus an ideal gas that fluctuates, with what are called Bogoliubov excitations.  For details, see \cite{Svistunov} (1.1.4).
 
 An alternative way to model the dynamic behavior of the system is to find equations for its `density' and `velocity', similar to the way it is done in fluid dynamics, as we will see later.  Recalling that $P(\mathbf{r}) = |\Psi_0(\mathbf{r})|^2$, it makes sense to call this the density of the condensate.  It turns out that from the Gross-Pitaevskii equation one can deduce that:
 \[\frac{\partial n}{\partial t} + \nabla \cdot (n \mathbf{v}) = 0\]
@@ -251,6 +125,7 @@ Now, as we will see in the fluid dynamics section, the equation above is very si
 \begin{equation}\label{euler}
     \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v}\cdot \mathbf{\nabla})\mathbf{v} = -\frac{1}{m}\nabla \mu
 \end{equation}
+The derivations in this section are made, for instance, in \cite{JacquesTempere} (1.4-1.5).
 
 \section{The discovery of superfluidity}
 
@@ -273,12 +148,160 @@ It was not until 1938 that the most important property of \ce{He}-II was reveale
 Researchers Jack Allen and Donald Misener, on the one hand, and Pjotr Kapitza, on the other, conducted experiments on the flow of \ce{He}-II to conclude that it can flow without viscosity. It turns out that at temperatures below the lambda temperature, this substance presents (with current experiments) no difficulty in passing through capillaries of the order of nanometers. This phenomenon was named superfluidity. The ideal fluid behavior adds to the arguments in favor of \ce{He}-II having a Bose condensate of \ce{He} atoms.
 \\
 
-We could conclude that this phenomenon is due to the disappearance of viscosity.However, the nature is not so simple.Experimentally, using a viscometer, a gradual (not sudden) drop in viscosity is observed starting at $T_\lambda$.
+We could conclude that this phenomenon is due to the disappearance of viscosity.However, the nature is not so simple. Experimentally, using a viscometer, a gradual (not sudden) drop in viscosity is observed starting at $T_\lambda$.
 \\
 
-\subsection{Eki}
+\section{Eki Parte}
+\todo{Hay que reframear esta parte un poco, ya que hemos explicado la cuántica al principio}
+According to the classical theory of matter, at sufficiently low temperatures any system formed of identical particles confined to a given volume should come to rest, as the average kinetic energy continues to decline. Presumably be closed-packed lattice.
+
+
+On the contrary, according to quantum theory, the most stable state of any system is given by minimum of the energy integral over all configuration states. In such a way, it is a kind of kinetic equilibrium for so-called zero point motion characterized by the minimum average Total (potential + kinetic) energy under the supplementary connection of Heisenberg inequality.
+\\
+
+The existence of superfluid and in particular the strange transfer mechanism they exhibit are direct indications that they represent macroscopic system with some quantum properties as at these temperatures, the mean thermal (kinetic) energy becomes so small that the mean de-Broglie wavelength $\lambda = h/p$ assumes a value of the order of the minimum molecular distance. And so, the classical theory is incompetent and that presumably quantum mechanisms are relevant to their constitution as a whole.
+\\
+
+In 1908 Kamerlingh Onnes liquefied helium for the first time at a critical temperature of 5.2 K, and as the temperature was lowered, he found that when the liquid is cooled below 2.2 K it starts expanding instead of continuing to contract, thus deviating from the behavior of more substances.
+As years passed and more experiments were done as the technics improved, in 1924 Onnes and Boks found that the density as a function of temperature has a sharp maximum with a discontinuity of its slope at that temperature, emphasizing that some kind of transformation was occurring around this temperature.
+\\
+
+\todo{Source?}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\linewidth]{Images/Density.png}
+    \caption{Density of liquid helium as a function of temperature.}
+    \label{fig:enter-label}
+\end{figure}
+
+\todo{Por el amor de dios mejorar la acalidad de imagen}
+
+This phenomenon led to Keesom and Wolk in 1928 define the terminology ``helium I'' and ``helium II'',
+for the heater and cooler states respectively,
+suggesting the idea of a kind of allotropic modification.
+
+But in contrast to ordinary phase transitions, the transition from helium II to helium I was shown to not be accompanied by a latent heat. Later on, in 1932 specific heat measurements by Keesom and Clausius showed a singularity of the specific heat curve with a characteristic profile, resembling the shape of the letter lambda, and so giving rise to the name $\lambda$-point.
+\\
+\todo{Source?}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\linewidth]{Images/LambdaCp.png}
+    \caption{Specific heat of liquid helium under its own vapor pressure.}
+    \label{fig:enter-label}
+\end{figure}
+
+The lambda-point occurs in many substances. It consists in transitions of second order which are characterized by vanishing latent heat and the above-mentioned sort of singularity of specific heat. They usually occur whenever some type of order is gradually destroyed with rising temperature, until, at some well-defined ``transition temperature'' the last vestige of this order disappears. A very well studied example of this anomaly is the ferromagnetic Curie point of the metals of the iron group.
+\\
+
+\todo{Source?}
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+        \begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Images/CuriePoint.png}
+            \caption{Specific heat as a function of temperature showing the peak at the Curie point.}
+            \label{fig:enter-label}
+        \end{subfigure} &
+        \begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Images/AmmoniumChloride.png}
+            \caption{Several experiments on \ce{NH4Cl} showing discontinuity on the slope of various thermodynamic magnitudes.}
+            \label{fig:enter-label}
+        \end{subfigure}
+   
+    \end{tabular}
+\end{figure}
+
+However, the classical example of the $\lambda$-point of liquid helium does not seem to admit an explanation in terms of any mechanism of this kind; the helium atoms are just too symmetrical to achieve an order-disorder transition, say, by virtue of an orientation like that of the \ce{NH_4} tetrahedra of the ferromagnetic dipole alignment. Nor can a pure substances like helium establish anything like the type or order of binary alloys. Liquid helium seems to be too simple to have a $\lambda$-point!
+\\
+
+By examining the phase diagram on P-T plane, we can observe more conspicuous properties. Probably the most striking one might be the absence of a triple point between the solid, liquid and gaseous states. Instead are actually two triple points, at the ends of the $\lambda$-line which separates liquid \ce{He} I from \ce{He} II\@.
+\\
+
+In addition, another peculiarity is that melting curve seem to approach $T = 0$ at a pressure of about 25 atm flattening in a asymptotic way. From the Clausius-Clapeyron equation $dP_m / dT =(S_{liq}-S_{sol})/(V_{liq}-V_{sol})$ where $P_m$ is the melting pressure curve, it follows that at 1 K the entropy of the liquid must be practically equal to entropy of the solid, as $dP_m / dT = 0 \implies \Delta S = 0 \implies S_{liq}=S_{sol}$.
+
+Hence it seems as if between 2.2 K and 1 K liquid helium loses all entropy characteristic of the disorder of the ordinary liquid state.
+\\
+
+\todo{Source?}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/PhaseDiagr.png}
+    \caption{Allocation of the four states of helium in the P-T plane}
+    \label{fig:enter-label}
+\end{figure}
+
+Solid helium cannot be melted isothermally by supplying heat to the system, since there is no heat of melting. Close to absolute zero, solidification and melting are purely mechanical processes as no entropy change is involved in this transition.
+
+At absolute zero, where the system is in its lowest (single) quantum state, melting must then consist in an adiabatic transformation of this quantum state. Even at finite temperatures, at which liquid helium II has some entropy, there is a very peculiar transfer process by which at least a part of the liquid can slip through the finest cracks and extremely narrow slits and capillaries, which for normal liquids are, in effect, impassable. This apparent zero-viscosity is referred to as superfluidity.
+\\
+
+However, in other experiments, such as measuring the torque of a rotating disk submerged in a tank of liquid helium, proved the existence of a non-zero viscosity, contradicting the results of the capillary flow.
+\\
+
+We could try to interpret this nested behavior as a solid with such a high molecular volume that actually can flow.
+
+But, as might be expected, the reality is more convoluted. This system does not represent a liquid in the ordinary sense. There are no potential barriers as in ordinary liquid to overcome when an external stress is applied. In this respect there seem to be a greater similarity to a gas than we are used to assume in ordinary liquids. This view is supported by the extremely significant fact that liquid helium I, which on first sight appears to be quite an ordinary viscous liquid, actually has a viscosity of a type ordinarily found only in gases and not in liquids.
+\\
+
+In ordinary liquids the momentum transport proceeds over obstacles presumably formed by the interlocking force field of neighboring molecules. This can be derived from the fact that the viscosity of normal liquids has a large negative temperature coefficient, indicating that the passage of molecules between their neighbors is greatly aided by thermal excitation. $\eta_{liquid}\sim e^{A/RT}$ where $A$ is the activation energy.
+
+This liquid-type or dynamic viscosity is characteristically different from the gas-type or kinetic viscosity. In a gas the transport of momentum proceeds unhindered over the mean free path. It is proportional to the average momentum the molecules and thus proportional to square root of the temperature. $\eta_{gas} \sim \rho \overline{\nu} l \sim \sqrt{T}$ where $\overline{\nu} =$ average molecular velocity, $l=$ mean free path, $\rho=$ density. According to this formula the viscosity of a gas increases with temperature.
+\\
+
+As shown in the figure, the temperature coefficient of liquid He I is clearly positive and, hence, of the type usually shown only by gases. The viscosity of the liquid is only about three times as large as that vapor, although its density is larger by a factor of 800: $\eta_{\text{He gas}} = 0.8\times 10^{-5} \text{ poise} \quad \eta_{\text{He I}} = 2.5\times 10^{-5} \text{ poise}$.
+\\
+
+$\eta_{liq} \approx 3 \eta_{vap}$
+\\
+
+$\rho_{liq} \approx 800 \rho_{vap}$
+\\
+
+\todo{Source?}
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+        \begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Images/Viscosity.png}
+            \caption{Viscosity of gaseous and liquid helium and of gaseous and liquid hydrogen as function of temperature.}
+            \label{fig:enter-label}
+        \end{subfigure} &
+        \begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Images/waterVis.png}
+            \caption{Viscosity of water as a function of temperature.}
+            \label{fig:enter-label}
+        \end{subfigure}
+   
+    \end{tabular}
+\end{figure}
+
+Because of this exceptional large molar volume, liquid helium under low pressure might reasonably be contemplated from a point of view that emphasizes, more than in usual with other liquids, a similarity to a gas. Only under sufficiently high pressure does liquid helium I behave like an ordinary liquid.
+\\
+
+It appears as some aspects of liquid helium can be qualitatively explained by some classical models, but by putting the pieces together, nothing more than a paradoxical, counter-intuitive chimera is obtained
 
 \section{The two-fluid model}
+
+As we have seen in previous sections, \todo{hemos hablado de la contradicción bien no?} Helium-II presents an apparent contradiction in its behavior under lambda temperature. In particular, depending on the experiment, it acts in a viscous or ideal manner. This “duality” may remind the reader of the wave-corpuscle duality present in quantum mechanics. In fact, this is the culprit.
+\\
+
+Laszlo Tisza introduced for the first time in 1938 the "two fluid model" of superfluidity. Tisza published the basics of his model as a note in \textit{Nature}. In 1941, Lev Landau reformulated rigorously this model. The existence of a mixture of two fluids with independent velocities was confirmed with successive experimental research. Their prediction of the existence of heat waves, as a consequence of the model, was also confirmed. After this, it took several decades for the superfluidity of liquid helium to be fully understood.
+\\
+
+The Landau-Tisza model that we derive in this section is formulated in terms of five quantities (superfluid density $\rho_s$, normal density $\rho_n$, superfluid velocity $v_s$, normal velocity $v_n$ and entropy density $s$). We immediately deduce four evolution equations, namely, the continuity equation, balance of momentum, evolution of superfluid velocity, and entropy balance. Since we have more variables than equations we set a dependence on the ratio $\rho_n/\rho$ on temperature. 
+\\
+
+However, the distinction between these two densities is not completely real. It actually goes against the nature of superfluid helium-II, which is a single fluid with two motions, as expressed by Landau: ``It must be particularly stressed that we
+have here no real division of the particles of the liquid into `superfluid'
+and `normal' ones.''
+\\
+
+It must be mentioned that the model has several limitations. For instance, it does not allow for non-zero superfluid vorticity, which will not be treated here.
+
 
 \subsection{Fluid dynamics}
 The classical theory of fluid dynamics generally assumes that the fluid is
@@ -321,12 +344,12 @@ flowing with velocity $\mathbf{v}$.
 
 The superfluid is a many-particle system which similar to a BEC is at a low temperature.  Each individual particle may oscillate between different states, but at any one moment, most of them are in the ground state.  In a similar way that a macroscopic description of fluid dynamics treats the fluids like continuous substances with a velocity and density defined at each point, it is natural to describe the superfluid macroscopically by having two velocities and two densities associated with the macroscopic wave function, on the one hand, and the thermal fluctuations, on the other.  Notice, however, how we are not saying that a superfluid has two components, one superfluid and one normal that move independently, but rather that it moves with two flows, one coherent and inviscid and the other with viscosity.
 
-\subsection{Andronikashvili torsional oscillator experiment}
+\subsection{Two densities}
 
-This may appear to be a contradiction, but how can it exhibit two different behaviors? This mystery led Lev Landau to hypothesize the existence of a viscous and a superfluid component. However, these components do not imply distinguishable fluids, since the superfluid behavior is not eliminated when He-II is filtered through the capillary. Therefore, these components can transform into each other, as if each particle had both natures. This “duality” seems to point to quantum phenomenology: the Helium-II phase is a “quantum state” of matter.
+Experimentally, physicists noticed that the existence of two components does not mean distinguishable fluids, since the superfluid behavior is not eliminated when He-II is filtered through the capillary! Therefore, these components can transform into each other, as if each particle had both natures. 
 \\
 
-This duality was studied by Elepter Andronikashvili in 1946. He constructed a stack of finely separated disks, which he attached to the ceiling of the experimental cell forming a torsional oscillator. The frequency of oscillation is $\omega = \sqrt{\kappa/I}$, where $\kappa$ is the stiffness coefficient of the string and I is the moment of inertia of string and disks. By measuring the frequency we can find the moment of inertia. While the viscous fluid contributes to the moment of inertia, the superfluid component does not. Andronikashvili was thus able to measure the fraction that remained viscous.
+This duality was studied by Elepter Andronikashvili in 1946. He constructed a stack of finely separated disks, which he attached to the ceiling of the experimental cell forming a torsional oscillator. The frequency of oscillation is $\omega = \sqrt{\kappa/I}$, where $\kappa$ is the stiffness coefficient of the string and I is the moment of inertia of string and disks. By measuring the frequency we can find the moment of inertia, he noticed that while the viscous fluid contributes to the moment of inertia, the superfluid component does not. Andronikashvili was thus able to measure the fraction that remained viscous, establishing the dependence of this ratio on temperature.
 \\
 
 It is then concluded that the total density can be understood as the sum of superfluid component (non-viscous and does not allow temperature gradients) and a normal (viscous) component.
@@ -336,7 +359,7 @@ It is then concluded that the total density can be understood as the sum of supe
 The superfluid part appears at lambda temperature and increases its presence with decreasing temperature until at near zero temperature the normal part is negligible. The normal component has non-zero thermal resistance, but this acts in parallel with the other, resulting in the discontinuity of thermal gradients observed in $T_\lambda$.
 \\
 
-It should be emphasized that the fraction of each component is a function of temperature only. If you had more normal component concentration in one part of the fluid then this would imply a thermal gradient which we have concluded is impossible.
+It should be emphasized that the fraction of each component is a function of temperature only (at a fixed pressure). If you had more normal component concentration in one part of the fluid then this would imply a thermal gradient which we have concluded is impossible.
 \\
 
 \subsection{Equations of superfluids}
@@ -372,8 +395,10 @@ We have used the well-known definition of Gibbs energy and the relation:
 
 Therefore, writing 
 \[\rho = (Nm)/V \qquad s = \frac{S}{mN}\]
+
 We finally have
 \[\nabla \mu = \frac{m}{\rho} \nabla \rho - m s \nabla T\]
+
 Now, by direct substitution:
 
 \[\frac{\partial \mathbf{v_s}}{\partial t} + (\mathbf{v_s}\cdot \mathbf{\nabla})\mathbf{v_s} = -\frac{1}{\rho}\nabla p + s \nabla T \tag{I}\]
@@ -402,9 +427,11 @@ Now we have closed the system of hydrodynamic equations for He-II, known as the 
 This set of equations describe (with the appropriate boundary conditions) all special properties of He-II\@. In order to consider external potentials, we can simply add their potential energy per unit volume to the pressure term. 
 \\
 
-Finally, it must be remarked that this model is considered phenomenological. Landau and Tisza did not work out any microscopic interpretation. \todo{HAVE WE ALREADY INTRODUCED THESE NAMES?}
+Finally, it must be remarked that this model is considered phenomenological. Landau and Tisza did not work out any microscopic interpretation. 
 
 \section{Superfluid phenomena}
+
+In this section we will discuss the most impressive phenomena of superfluid helium. We will try to understand them by means of the already presented interpretation of the two-fluid model.
 
 \subsection{Fountain effect}
 
@@ -412,9 +439,17 @@ Finally, it must be remarked that this model is considered phenomenological. Lan
 One of the most fascinating phenomena presented by \ce{He}-II is the fountain effect. A porous-based flask is immersed in a bath of \ce{He}-II so that only the superfluid component can infiltrate the vessel. A heat source (such as a dissipative wire) is placed inside the flask. This heats the helium, causing the superfluid part to flow into the hot spot, causing the helium height to rise. This rise can reach the top of the bottle, escaping through a small hole made there, so that a fountain is observed. In short, a temperature gradient leads to a pressure head.
 \\
 
-Let's do some calculations. The pressure gradient can be extracted from equation \eqref{hyd:1} if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$ so that $\Delta p = \rho s \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/kincl.png}
+    \caption{Simulation of Fountain effect using SPH at \cite{Kincl}}
+    \label{fig:enter-label}
+\end{figure}
 
-This effect is simulated and studied in \cite{Kincl}
+Let's do some calculations. The pressure gradient can be extracted from equation \eqref{hyd:1} if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$ so that $\Delta p = \rho s \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
+\\
+
+This effect is simulated and studied in \cite{Kincl}, where they use the technique smooth particle hydrodynamics.
 
 \subsection{Superfluid creep}
 
@@ -424,30 +459,18 @@ This phenomenon appears when a cup is immersed in He-II and then removed from th
 Superfluid creep is the consequence of the property of helium to maintain capillary flow through narrow channels. With a regular fluid (such as water), a meniscus is also observed due to the adhesion of the liquid with the vessel wall. However, as this layer is very narrow, there is an impediment to viscous flow. In addition, this film is very unstable in the face of temperature variations that evaporate and destabilize it. The capillary flow capability and superb thermal conductivity of He-II allow it to avoid these restrictions. Superfluid flow is possible, allowing the two phases to rise (remember that they are inseparable).
 \\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/creep.png}
+    \caption{Capture of superfluid creep}
+    \label{fig:enter-label}
+\end{figure}
+
 \subsection{Second sound}
 
 The phenomenon of second sound was first described by Lev Landau in 1941. \cite{LevLan}
-So far, we have described several phenomena related to the unusual heat propagation in He-II, such as the absence of boiling, the fountain effect or superfluid creep. In normal fluids, the heat equation is one of diffusion giving rise to dissipative processes in which excess heat is transported over a distance that grows with the square root of time. However, in He-II, this heat propagates as a wave, so that the distance the heat is transported is linear with time and therefore at constant velocity. The temperature wave is called the second sound. Its velocity characterizes the speed with which the helium makes the temperature gradients disappear.\\
+So far, we have described several phenomena related to the unusual heat propagation in He-II, such as the absence of boiling, the fountain effect or superfluid creep. In normal fluids, the heat equation is one of diffusion giving rise to dissipative processes in which excess heat is transported over a distance that grows with the square root of time. However, in He-II, this heat propagates as a wave, so that the distance the heat is transported is linear with time. The temperature wave is called the second sound. Its velocity characterizes the speed with which the helium makes the temperature gradients disappear.\\
 
-While normal sound waves are fluctuations in the density of particles in a substance, second sound waves are fluctuations in the density of quasiparticle thermal excitations, and they can be observed in every system in which momentum is conserved in most phonon-phonon collisions, like superfluids. [Srinivasan, R. Second sound. Reson 4, 16–24 (1999). https://doi.org/10.1007/BF02838720]
-
-\section{Modelo de Landau}
-\todo{This should go somewhere else}
-\cite{Kincl}
-Main results of Landau:
-Theory of liquid helium. Introduction of notion of quasiparticles. Superfluid
-helium as a quantum liquid. Phonons and rotons. Prediction of second, third,
-fourth and fifth sounds, zero sound.
-
-\cite{PhysRev.60.356}
-
-% Faig alguns apunts random
-The first macroscopic models of superfluid helium-4 were
-proposed by Tisza. His final model consists of four evolution equations, namely, the continuity equation, balance of momentum, evolution of superfluid velocity, and entropy balance. However, the model has several limitations. First, it does not allow for non-zero superfluid vorticity (quantum vortices). 
-
-The Landau-Tisza model is formulated in terms of five quantities (superfluid density $\rho_s$, normal density $\rho_n$, superfluid velocity $v_s$, normal velocity $v_n$ and entropy density $s$). Since we have more variables than equations we set a dependence on the ratio $\rho_n/\rho$ on temperature. But this goes against the nature of superfluid helium-4, which is a single fluid with two motions, as expressed by Landau: ``It must be particularly stressed that we
-have here no real division of the particles of the liquid into `superfluid'
-and `normal' ones.''
 
 \section{Our simulation}
 % Que métodos de resolución de EDPS usamos, que programas, resultados, predicciones.
@@ -491,9 +514,12 @@ The speed of the second sound \(u_2\) is related to these values by:
 \[u_2^2 = \frac{\chi_{s0}T_0s_0^2}{\chi_{n0}C}\]
 \subsection{Method}
 A spectral method discretizes functions by expanding them over a set of basis functions.
-Project Dedalus\cite{Dedalus} is a flexible framework for spectrally solving differential equations. We used this framework to spectrally solve the equations of our model over periodic 2D space.
+Project Dedalus~\cite{Dedalus} is a flexible framework for spectrally solving differential equations. We used this framework to spectrally solve the equations of our model over periodic 2D space.
+\\
 
 We begin defining the domain of our problem, since we won't be imposing boundary conditions, our domain is defined with two-dimensional cartesian coordinates over real Fourier basis.
+\\
+
 Next, we define the fields for the variables of our problem \(\rho, s, \mathbf{v}, \mathbf{v_s}\) and the constants \(\chi', \chi_{n0}, \chi_{s0}, s_0, \rho_0, u_1, C \text{ and } T_0\).
 Then, we define our initial value problem and the necessary substitutions to compute the operations of our model.
 Next we add the equations of the model ant set the initial conditions. 
@@ -501,25 +527,27 @@ Finally, we build our solver, iterate for a certain simulation time and plot the
 
 \subsection{Simulations}
 
-\subsubsection{Simulation 1}
+Now, in this section we show some results of the programming work we have done. In each simulation, we can see the manifestation of some property of helium-II discussed throughout this paper.
+
+\subsubsection{Simulation 1: First and second sound}
 In this first simulation we aim to observe the first and second sound and compare their velocities.
 We found that if we set the initial velocity to \(\mathbf{v} = (e^{-10x^2}, 0)\) a density and an entropy gradient is generated at he \(x=0\) line. 
 In figure~\ref{sim1} we can clearly see how, as the simulation advances, the density wave travels faster than the entropy wave.
 
 \begin{figure}[h]
-    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0000.png}
-    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0020.png}
-    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0040.png}
-    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0060.png}
-    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0080.png}
-    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0100.png}
+    \includegraphics[width=\textwidth/2]{Sim 1/SF01_0000.png}
+    \includegraphics[width=\textwidth/2]{Sim 1/SF01_0020.png}
+    \includegraphics[width=\textwidth/2]{Sim 1/SF01_0040.png}
+    \includegraphics[width=\textwidth/2]{Sim 1/SF01_0060.png}
+    \includegraphics[width=\textwidth/2]{Sim 1/SF01_0080.png}
+    \includegraphics[width=\textwidth/2]{Sim 1/SF01_0100.png}
     \caption{Snapshots from simulation 1}
     \label{sim1}
 \end{figure}
 
-\subsubsection{Simulation 2}
-In the next two simulations we will explore what happens when we add a perturbation to the density or entropy field.
-In simulation 2 we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\) and we observed how this perturbation in the density field creates a perturbation in the entropy field as can be seen in figure \ref{sim2_start}.
+\subsubsection{Simulation 2: Peak in density}
+In the next two simulations, we will explore what happens when we add a perturbation to the density or entropy field.
+In simulation 2 we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\) and observed how this perturbation in the density field creates a perturbation in the entropy field as can be seen in Figure \ref{sim2_start}.
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth/3]{Sim 2/SF02_0000.png}
@@ -539,35 +567,68 @@ In figure~\ref{sim2} we observe two waves in the entropy field, one that follows
     \label{sim2}
 \end{figure}
 
-\subsubsection{Simulation 3}
+\subsubsection{Simulation 3: Peak in entropy}
 In simulation 3 we set the initial entropy to \(s = s_0 + e^{-10x^2}\).
-In figure \ref{sim3} we can see a similar phenomena to simulation to, in this case, there are two waves in the density field, one follows the entropy and the other travels faster.
+In figure \ref{sim3} we can see a similar phenomenon to simulation 2, in this case, there are two waves in the density field, one follows the entropy and the other travels ahead of it.
 
 \begin{figure}[h]
-    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0020.png}
-    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0027.png}
-    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0029.png}
+    \includegraphics[width=\textwidth/2]{Sim 3/SF01_0000.png}
+    \includegraphics[width=\textwidth/2]{Sim 3/SF01_0005.png}
+    \includegraphics[width=\textwidth/2]{Sim 3/SF01_0010.png}
+    \includegraphics[width=\textwidth/2]{Sim 3/SF01_0015.png}
+    \includegraphics[width=\textwidth/2]{Sim 3/SF01_0020.png}
+    \includegraphics[width=\textwidth/2]{Sim 3/SF01_0025.png}
     \caption{Snapshots from simulation 3}
     \label{sim3}
+\end{figure}
+
+\subsubsection{Simulation 4: Standing waves}
+In this simulation we set the velocity field to \(\mathbf{v} = (0.1\cos(y), -0.1\cos(x))\) and found that both the density and the entropy fields oscillate in a certain pattern. If we measure the frequency of these oscillations, the density field has a frequency of around 8.8 Hz and the entropy field has a frequency of around 4 Hz. \todo{justify \(\lambda = \sqrt{2} \pi\)} then we find that the velocity of the waves in the density field is 39 m/s and the velocity of the entropy waves is 17.7 m/s. This result agrees with the known speeds of the first sound (40 m/s) and the second sound (18.8 m/s).
+
+Another property of superfluids we can observe in this simulation is that the superfluid component is irrotational. In figure \ref{sim4} we can see some snapshots of this simulation.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth/2]{Sim 4/SF01_0000.png}
+    \includegraphics[width=\textwidth/2]{Sim 4/SF01_0010.png}
+    \includegraphics[width=\textwidth/2]{Sim 4/SF01_0020.png}
+    \includegraphics[width=\textwidth/2]{Sim 4/SF01_0030.png}
+    \includegraphics[width=\textwidth/2]{Sim 4/SF01_0040.png}
+    \includegraphics[width=\textwidth/2]{Sim 4/SF01_0050.png}
+    \caption{Snapshots from simulation 4}
+    \label{sim4}
+\end{figure}
+
+\subsubsection{Simulation 5: Fountain effect}
+The objective of this simulation is to represent the fountain effect. As the initial conditions, we set the entropy field to \(s_o + 100e^{-(x^2+y^2)}\). With these conditions we can clearly see the flow of the superfluid component towards the hot spot thus flattening the gradient of entropy and increasing the pressure and density. In figure \ref{sim5} we have som images from this simulation.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth/2]{Sim 5/SF01_0000.png}
+    \includegraphics[width=\textwidth/2]{Sim 5/SF01_0050.png}
+    \includegraphics[width=\textwidth/2]{Sim 5/SF01_0100.png}
+    \includegraphics[width=\textwidth/2]{Sim 5/SF01_0150.png}
+    \includegraphics[width=\textwidth/2]{Sim 5/SF01_0200.png}
+    \includegraphics[width=\textwidth/2]{Sim 5/SF01_0250.png}
+    \caption{Snapshots from simulation 5}
+    \label{sim4}
 \end{figure}
 
 \section{Conclusion}
 
 \todo{Write conclusion}
 
-In this project we have seen a great variety of unusual and exciting behaviors of superfluid helium and how they can be modeled using a quantum theory of Bose-Einstein condensation.  We also put the theories to the test by simulation such a fluid in a two-dimensional periodic environment, confirming many of these properties.
+In this project, we have seen a great variety of unusual and exciting behaviors of superfluid helium and how they can be modeled using a quantum theory of Bose-Einstein condensation.  We also put the theories to the test by simulating such a fluid in a two-dimensional periodic environment, confirming some of these properties.  We have been able to verify the phenomenon of second sound and confirmed that its velocity is roughly one half of that of first sound.  We have also confirmed the thermomechanical effect and that the superfluid is irrotational.  Other properties, such as superfluid creep or the dual viscous-inviscid nature of the fluid were outside of the scope of our simulation, since we had no boundary conditions in place and the simulation was only in two dimensions.
 
-But we must say that we have only scratched the surface of the phenomenon of superfluidity.  Some consider the hallmark of superfluids to be the presence of quantum vortices, which we have only mentioned in passing, and our simulation  does not show this behavior due to the macroscopic approximations made.  In fact, this very year quantum vortices have been experimentally observed for the first time in a supersolid, specifically made of dysprosium.  A supersolid presents many of the properties of superfluids, e.g. frictionless motion and quantum vortices, but retaining a more fixed atomic structure.
- 
+We must also say that we have only scratched the surface of the phenomenon of superfluidity.  Some consider the hallmark of superfluids to be the presence of quantum vortices, which we have only mentioned in passing, and our simulation  does not show this behavior due to the macroscopic approximations made.  In fact, this very year quantum vortices have been experimentally observed for the first time in a supersolid, specifically made of dysprosium.  A supersolid presents many of the properties of superfluids, e.g. frictionless motion and quantum vortices, but retaining a more fixed atomic structure.
+
+\todo{Why is our conclusion about supersolids?}
+ \todo{No sé on posar-lo, volia mencionar-ho}
 \section{Acknowledgments}
 
-Special thank you to Ondřej Kincl
-
-\todo{Ondřej Kincl}
+Special thanks to Ondrej Kincl, University of Trento. It has been a pleasure to correspond with a first class researcher. He has helped us to understand his paper and has been a motivation as a first contact with the more collaborative part of scientific research.
 
 \bibliographystyle{alpha} % Choose a style (e.g., plain, alpha, IEEEtran)
 \bibliography{bibliography} % Point to your .bib file (without extension)
-
-\todo{Bibliography}
+\todo{Añadir origenes de las imágenes}
+\todo{}
 
 \end{document}
