@@ -69,7 +69,7 @@ But in contrast to ordinary phase transitions, the transition from helium II to 
     \label{fig:enter-label}
 \end{figure}
 
-Lambda-point occur in many substances. Consist in transitions of second order which are characterized by vanishing latent heat and the above-mentioned sort of singularity of specific heat. They usually occur whenever some type of order is gradually destroyed with rising temperature, until, at some well-defined ``transition temperature'' the last vestige of this order disappears. A very well studied example of this anomaly is the ferromagnetic Curie point of the metals of the iron group.
+The lambda-point occurs in many substances. Consist in transitions of second order which are characterized by vanishing latent heat and the above-mentioned sort of singularity of specific heat. They usually occur whenever some type of order is gradually destroyed with rising temperature, until, at some well-defined ``transition temperature'' the last vestige of this order disappears. A very well studied example of this anomaly is the ferromagnetic Curie point of the metals of the iron group.
 \\
 
 \begin{figure}[H]
@@ -99,7 +99,7 @@ By examining the phase diagram on P-T plane, we can observe more conspicuous pro
 
 In addition, another peculiarity is that melting curve seem to approach $T = 0$ at a pressure of about 25 atm flattening in a asymptotic way. From the Clausius-Clapeyron equation $dP_m / dT =(S_{liq}-S_{sol})/(V_{liq}-V_{sol})$ where $P_m$ is the melting pressure curve, it follows that at 1 K the entropy of the liquid must be practically equal to entropy of the solid, as $dP_m / dT = 0 \implies \Delta S = 0 \implies S_{liq}=S_{sol}$.
 
-Hence it seem as if between 2.2 K and 1 K liquid helium loses all entropy characteristic of the disorder of the ordinary liquid state.
+Hence it seems as if between 2.2 K and 1 K liquid helium loses all entropy characteristic of the disorder of the ordinary liquid state.
 \\
 
 \begin{figure}[H]
@@ -161,24 +161,34 @@ $\rho_{liq} \approx 800 \rho_{vap}$
 Because of this exceptional large molar volume, liquid helium under low pressure might reasonably be contemplated from a point of view that emphasizes, more than in usual with other liquids, a similarity to a gas. Only under sufficiently high pressure does liquid helium I behave like an ordinary liquid.
 \\
 
-It appears as some aspects of liquid helium can be qualitative explained by some classical models, but by putting the pieces together, nothing more than a paradoxical, counter-intuitive chimera is obtained. 
+It appears as some aspects of liquid helium can be qualitatively explained by some classical models, but by putting the pieces together, nothing more than a paradoxical, counter-intuitive chimera is obtained. 
 
 \section{Bose-Einstein condensates}
 
+\todo{Quitar este párrafo si ponemos esta sección al inicio}
 Could quantum physics help us explain the strange behaviour of helium II\@?  In 1938, Fritz London proposed that Bose-Einstein condensates could be a mechanism for superfluidity.  This makes sense since helium 4 atoms are bosons: they are made up of an even number of fermions (2 protons, 2 neutrons and 2 electrons).  In 1924 Satyendra Nath Bose was the first to study these types of particles and their statistical behaviour.  Among other things, he considered the possibility of cooling down such a system to very low temperatures, and sent his work to Einstein for translation.  Einstein recognised the value of his efforts and agreed to translate the paper to German, and further made his own contributions.
-Before even talking about superfluids, we...
 
-\subsection{Basics}
+Before even talking about superfluids, we begin by investigating a quantum phenomenon called Bose-Einstein condensation.  In essence,
+a Bose-Einstein condensate is a many-particle system which, due to certain
+conditions, can be described by a macroscopic wave function.  Thus, the particles behave with a coherent flow.
 
-A Bose-Einstein condensate is a many-particle system which, due to certain
-conditions, can be described by a macroscopic wave function.  Thus, the particles
-behave with a coherent flow.  We can already see how superfluids will be related
-with these systems, since a coherent flow will mean no collisions between atoms
-and thus no friction or viscosity.  However, we must note that BECs do not always
-coincide with superfluids.
+In 1924 Satyendra Nath Bose was the first to study systems of particles with a symmetric wave function, now called bosons.  He studied their statistical behaviour and also considered the possibility of cooling down such a system to very low temperatures.  He sent his work to Einstein for translation.  Einstein recognised the value of his efforts and agreed to translate the paper to German, and further made his own contributions.
 \\
 
-Let us first consider a BEC where the particles form an ideal gas.  In this case we have $N$ particles that do not interact with each other.  Therefore, we can write the wave function of the system as a product of
+\subsection{Bose-Einstein statistics}
+
+Let us first consider a system of bosons that do not interact with each other.  In this case we have $N$ particles that do not interact with each other.  Since energy is discrete, we will have a series $\varepsilon_i$ of energies for $i = 0, 1, 2, \dots$.  Let $n_i$ be the number of particles with energy $\varepsilon_i$.
+
+In Bose's paper, he determined an expression for the expected value of $n_i$ by using the fact that the particles are indistinguishable and in particular the wave function is symmetric.  The expression is given by:
+
+\[\langle n_i \rangle = \frac{1}{e^{(\varepsilon_i-\mu)/(k_B T)} - 1}\]
+
+Here $\mu$ is the chemical potential and $T$ the temperature of the system.
+
+\subsection{Ideal BEC}
+
+Now let us consider the system at low temperatures.
+We can write the wave function of the system as a product of
 individual wave functions:
 \[\Psi(\mathbf{r}_1, \dots, \mathbf{r}_N) =
     \varphi_{s_1}(\mathbf{r}_1)\dotsb\varphi_{s_N}(\mathbf{r}_N)\]
@@ -186,7 +196,7 @@ This isn't entirely correct, though.  Since the particles are indistinguishable,
 \[\Psi(\mathbf{r}_1, \dots, \mathbf{r}_N) \propto \sum_{\sigma}
         \varphi_{s_1}(\mathbf{r}_{\sigma(1)})\dotsb
         \varphi_{s_N}(\mathbf{r}_{\sigma(N)})\]
-Where $\sigma$ is summed over the permutations of $N$ objects.  The proportionality factor can be determined...
+Where $\sigma$ is summed over the permutations of $N$ objects.  The proportionality factor can be determined if necessary.
 \\
 
 For large $N$, the previous expression quickly becomes unwieldy and difficult to deal with.  Fortunately there exists an alternative formalism of quantum mechanics, called \textbf{second quantization}, that greatly simplifies the treatment of many-particle systems.  In `first quantization', the system is expressed in terms of each particle $j$ being in the state $s_i$: $\alpha_{s_i}(\mathbf{r}_j)$.  In second quantization, however, we forget about the individuality of the particles and simply talk of \textit{how many particles are in each possible state}.  This is natural because the particles are indistinguishable anyway, and so we don't need to worry about symmetrizing (or antisymmetrizing for fermions) the wave function any more.
@@ -204,7 +214,11 @@ Now our system is a Bose-Einstein condensate if it is a low enough temperature t
 
 So far we have only been considering an ideal Bose gas with no interactions.  In reality, the bosons do interact with each other.  In 1956, Oliver Penrose and Lars Onsager proposed a criterion for when BEC occurs in general Bose gases.  Essentially, it so happens that similar to the occupation numbers $n_\lambda$ and the basis functions $\psi_\lambda$, one can define a certain series of numbers $\alpha_\lambda$ and functions $\phi_\lambda$ that are eigenvalues and eigenfunctions of an operator, and that they coincide with the $n_\lambda$'s and the $\psi_\lambda$'s for an ideal Bose gas.  The Penrose-Onsager criterion, then, is that $\alpha_0$ is close to $N$.  In this case, the macroscopic wave function is $\sqrt{\alpha_0} \phi_0$. 
 
-\subsection{Dynamics of BEC}
+\subsection{Properties}
+
+The fraction of particles in the ground state, $n_0/N$ can be determined statistically. 
+
+\subsection{Dynamics}
 
 Physicists Eugene Gross and Lev Pitaevskii deduced an equation that governs the macroscopic wave function of a pure condensate, that is, at $T = 0$.  In this idealized system, the interaction between atoms is a contact potential (i.e.\ proportional to $\delta(\mathbf{r}-\mathbf{r}')$ with $\delta$ the Dirac delta). It is called the \textbf{Gross-Pitaevskii equation} or the non-linear Schrödinger equation:
 
@@ -214,7 +228,9 @@ Where $\Psi$ is the macroscopic wave function, $V$ is an external potential and 
 \\
 
 For temperatures above zero, but not too close to $T_C$, one can make the approximation that the system behaves as a condensate plus an ideal gas that fluctuates, with what are called Bogoliubov excitations.
+
 \todo{Hydrodynamic equation of BEC (para referenciarlo luego en el two-fluid model)}
+
 \subsection{The search for BECs}
 
 The production of Bose-Einstein condensates turns out to be a very challenging feat.  It wasn't until 1995 that one was created in a lab for the first time.  The difficulty arises from the need to keep the particles confined in a small space while also remaining at a very low temperature.  This was finally achieved by using a magnetic trap with a strong magnetic potential to keep the particles in place.
