@@ -2,6 +2,7 @@
 \usepackage{amscd,amssymb,amsmath,latexsym,graphicx,epsfig,color,url,todonotes}
 \usepackage{graphicx} % Required for inserting images
 
+\usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{subcaption}
 \usepackage{geometry}
@@ -243,7 +244,9 @@ An alternative way to model the dynamic behavior of the system is to find equati
 where $\mathbf{v}$ is some function equal to:
 \[\mathbf{v} = \frac{\hbar}{2mi}\frac{\Psi*\nabla\Psi-\Psi\nabla\Psi*}{|\Psi|^2}\]
 Now, as we will see in the fluid dynamics section, the equation above is very similar to the continuity equation of a fluid.  Thus, it makes sense to identify the field $\mathbf{v}$ with the velocity of the fluid.  The following relation can then be deduced, which we will use later when we consider the equations that govern the superfluid:
-\[\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v}\cdot \mathbf{\nabla})\mathbf{v} = -\frac{1}{m}\nabla \mu\]
+\begin{equation}\label{euler}
+    \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v}\cdot \mathbf{\nabla})\mathbf{v} = -\frac{1}{m}\nabla \mu
+\end{equation}
 
 \section{The discovery of superfluidity}
 
@@ -348,7 +351,7 @@ The lambda peak, zero entropy, frictionless flow, together with the increase of 
 The normal component presents a nature that can be interpreted as the gas of Bogoliubov excitations on top of the condensate.
 \\
 
-We recall the hydrodynamic equation for a condensate for the superfluid component. Also known as the Euler equation: 
+We recall the hydrodynamic equation for a condensate for the superfluid component. Also known as the Euler equation (\ref{euler}): 
 
 \[\frac{\partial \mathbf{v_s}}{\partial t} + (\mathbf{v_s}\cdot \mathbf{\nabla})\mathbf{v_s} = -\frac{1}{m}\nabla \mu\]
 
@@ -386,10 +389,10 @@ Here the four unknowns are $\rho_s$, $\rho_n$, $\mathbf{v}_s$, and $\mathbf{v}_n
 
 Now we have closed the system of hydrodynamic equations for He-II, known as the two-fluid model:
 \begin{align}
-\rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) &= -\frac{\rho_s}{\rho} \nabla p + \rho_s s \nabla T,  \\
-\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) &= -\frac{\rho_n}{\rho} \nabla p - \rho_s s \nabla T + \eta_n \nabla^2 \mathbf{v}_n,  \\
-\frac{\partial (\rho_s + \rho_n)}{\partial t} &= -\nabla \cdot \mathbf{j}, \\
-\frac{\partial (\rho s)}{\partial t} &= -\nabla \cdot (\rho \mathbf{v}_n). 
+\rho_s \left( \frac{\partial \mathbf{v}_s}{\partial t} + (\mathbf{v}_s \cdot \nabla) \mathbf{v}_s \right) &= -\frac{\rho_s}{\rho} \nabla p + \rho_s s \nabla T, \label{hyd:1} \\
+\rho_n \left( \frac{\partial \mathbf{v}_n}{\partial t} + (\mathbf{v}_n \cdot \nabla) \mathbf{v}_n \right) &= -\frac{\rho_n}{\rho} \nabla p - \rho_s s \nabla T + \eta_n \nabla^2 \mathbf{v}_n, \label{hyd:2}  \\
+\frac{\partial (\rho_s + \rho_n)}{\partial t} &= -\nabla \cdot \mathbf{j}, \label{hyd:3} \\
+\frac{\partial (\rho s)}{\partial t} &= -\nabla \cdot (\rho \mathbf{v}_n). \label{hyd:4} 
 \end{align}
 
 This set of equations describe (with the appropriate boundary conditions) all special properties of He-II\@. In order to consider external potentials, we can simply add their potential energy per unit volume to the pressure term. 
@@ -405,7 +408,7 @@ Finally, it must be remarked that this model is considered phenomenological. Lan
 One of the most fascinating phenomena presented by \ce{He}-II is the fountain effect. A porous-based flask is immersed in a bath of \ce{He}-II so that only the superfluid component can infiltrate the vessel. A heat source (such as a dissipative wire) is placed inside the flask. This heats the helium, causing the superfluid part to flow into the hot spot, causing the helium height to rise. This rise can reach the top of the bottle, escaping through a small hole made there, so that a fountain is observed. In short, a temperature gradient leads to a pressure head.
 \\
 
-Let's do some calculations. The pressure gradient can be extracted from equation (1) if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$ so that $\Delta p = \rho s \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
+Let's do some calculations. The pressure gradient can be extracted from equation \eqref{hyd:1} if we consider stationary regime, the partial with respect to time in LHS disappears. We assume now also that there is no fountain and we have a column (this tells us how tall a column would have to be for there to be no fountain effect), which allows us to simplify $\mathbf{v}_s = 0$ so that $\Delta p = \rho s \Delta T$, which is known as the fountain formula of Fritz London. Taking $\Delta p = mg \Delta h$, we see that for a $\Delta T \sim T_\lambda$ the corresponding height would be more than 50 meters, which is much higher than a common flask. In conclusion, a tiny temperature variation is enough to have a noticeable fountain.
 
 This effect is simulated and studied in \cite{Kincl}
 
@@ -497,7 +500,7 @@ Finally, we build our solver, iterate for a certain simulation time and plot the
 \subsubsection{Simulation 1}
 In this first simulation we aim to observe the first and second sound and compare their velocities.
 We found that if we set the initial velocity to \(\mathbf{v} = (e^{-10x^2}, 0)\) a density and an entropy gradient is generated at he \(x=0\) line. 
-In figure\ref{sim1} we can clearly see how,as the simulation advances, the density wave travels faster than the entropy wave.
+In figure~\ref{sim1} we can clearly see how, as the simulation advances, the density wave travels faster than the entropy wave.
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth/3]{Sim 1/SF01_0000.png}
@@ -512,7 +515,7 @@ In figure\ref{sim1} we can clearly see how,as the simulation advances, the densi
 
 \subsubsection{Simulation 2}
 In the next two simulations we will explore what happens when we add a perturbation to the density or entropy field.
-In simulation 2 we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\) and we bserved how this perturbation inthe density field crates a perturbation in the entropy field as can be seen in figure \ref{sim2_start}.
+In simulation 2 we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\) and we observed how this perturbation in the density field creates a perturbation in the entropy field as can be seen in figure \ref{sim2_start}.
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth/3]{Sim 2/SF02_0000.png}
@@ -548,7 +551,7 @@ In figure \ref{sim3} we can see a similar phenomena to simulation to, in this ca
 
 \todo{Write conclusion}
  
-\section{Acknowledgements}
+\section{Acknowledgments}
 
 \todo{Ondřej Kincl}
 
