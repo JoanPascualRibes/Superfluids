@@ -28,6 +28,7 @@
 \maketitle
 \begin{abstract}
 \todo{Write abstract}
+We look at superfluids
 \end{abstract}
 
 \tableofcontents
@@ -216,7 +217,15 @@ So far we have only been considering an ideal Bose gas with no interactions.  In
 
 \subsection{Properties}
 
-The fraction of particles in the ground state, $n_0/N$ can be determined statistically. 
+The fraction of particles in the ground state, $n_0/N$ can be determined statistically from the Bose-Einstein distribution.  It only depends on the temperature, since this determines the average energy per particle.  In 1995, when a BEC was created for the first time, this was experimentally confirmed.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Images/CondensateFraction.png}
+    \caption{The condensate fraction of trapped rubidium atoms as a function of the temperature.  The solid line shows the theoretical prediction, and the points represent the experimental data. Source: J. Ensher et al., Phys. Rev. Lett. 77, 4984 (1996).}
+    \label{fig:enter-label}
+\end{figure}
+
 
 \subsection{Dynamics}
 
@@ -229,11 +238,12 @@ Where $\Psi$ is the macroscopic wave function, $V$ is an external potential and 
 
 For temperatures above zero, but not too close to $T_C$, one can make the approximation that the system behaves as a condensate plus an ideal gas that fluctuates, with what are called Bogoliubov excitations.
 
-\todo{Hydrodynamic equation of BEC (para referenciarlo luego en el two-fluid model)}
-
-\subsection{The search for BECs}
-
-The production of Bose-Einstein condensates turns out to be a very challenging feat.  It wasn't until 1995 that one was created in a lab for the first time.  The difficulty arises from the need to keep the particles confined in a small space while also remaining at a very low temperature.  This was finally achieved by using a magnetic trap with a strong magnetic potential to keep the particles in place.
+An alternative way to model the dynamic behaviour of the system is to find equations for its `density' and `velocity', similar to the way it is done in fluid dynamics, as we will see later.  Recalling that $P(\mathbf{r}) = |\Psi_0(\mathbf{r})|^2$, it makes sense to call this the density of the condensate.  It turns out that from the Gross-Pitaevskii equation one can deduce that:
+\[\frac{\partial n}{\partial t} + \nabla \cdot (n \mathbf{v}) = 0\]
+where $\mathbf{v}$ is some function equal to:
+\[\mathbf{v} = \frac{\hbar}{2mi}\frac{\Psi*\nabla\Psi-\Psi\nabla\Psi*}{|\Psi|^2}\]
+Now, as we will see in the fluid dynamics section, the equation above is very similar to the continuity equation of a fluid.  Thus, it makes sense to identify the field $\mathbf{v}$ with the velocity of the fluid.  The following relation can then be deduced, which we will use later when we consider the equations that govern the superfluid:
+\[\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v}\cdot \mathbf{\nabla})\mathbf{v} = -\frac{1}{m}\nabla \mu\]
 
 \section{The discovery of superfluidity}
 
