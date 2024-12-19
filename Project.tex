@@ -332,16 +332,41 @@ Finally, we build our solver, iterate for a certain simultaion time and plot the
 \subsubsection{Simulation 1}
 In this first simulation we aim to observe the first and second sound and compare their velocities.
 We found that if we set the initial velocity to \(\mathbf{v} = (e^{-10x^2}, 0)\) a density and an entropy gradient is generated at he \(x=0\) line. 
-In \ref{sim1} we can clearly see how,as the simulation advances, the density wave travels faster than the entropy wave.
+In figure\ref{sim1} we can clearly see how,as the simulation advances, the density wave travels faster than the entropy wave.
 \begin{figure}
-    \includegraphics{Viscosity.png}
+    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0000.png}
+    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0020.png}
+    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0040.png}
+    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0060.png}
+    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0080.png}
+    \includegraphics[width=\textwidth/3]{Sim 1/SF01_0100.png}
     \caption{Snapshots from simulation 1}
     \label{sim1}
 \end{figure}
 
 \subsection{Simulation 2}
 In the next two simulations we will explore what happens when we add a perturbation to the density or entropy field.
-If we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\)
+In simulation 2 we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\) and we bserved how this perturbation inthe density field crates a perturbation in the entropy field as can be seen in figure \ref{sim2_start}.
+
+\begin{figure}
+    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0000.png}
+    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0003.png}
+    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0006.png}
+    \caption{Snapshots from simulation 2}
+    \label{sim2_start}
+\end{figure}
+
+In figure \ref{sim2} we observe two waves in the entropy field, one that follows the wave in the density field, and another one that falls behind.
+
+\begin{figure}
+    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0020.png}
+    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0027.png}
+    \includegraphics[width=\textwidth/3]{Sim 2/SF02_0029.png}
+    \caption{Snapshots from simulation 2}
+    \label{sim2}
+\end{figure}
+
+\subsubsection{Simulation 3}
 
 \section{Conclusion}
 
