@@ -259,6 +259,7 @@ While normal sound waves are fluctuations in the density of particles in a subst
 
 
 \section{Modelo de Landau}
+\todo{This should go somwhere else}
 \cite{Kincl}
 Main results of Landau:
 Theory of liquid helium. Introduction of notion of quasiparticles. Superfluid
@@ -279,7 +280,7 @@ and ‘normal’ ones.”
 \section{Our simulation}
 % Que métodos de resolución de EDPS usamos, que programas, resultados, predicciones.
 \subsection{The model}
-Our model consists of the following four equations:
+Our simulation uses the model from\cite{Kincl} which consists of the following four equations:
 \begin{align}
 \frac{D\rho}{Dt} &= -\rho \nabla \cdot \mathbf{v}, \\
 \frac{Ds}{Dt} &= -\frac{1}{\rho} \nabla \cdot (\rho s \chi_s \mathbf{v_{ns}}) + \frac{\beta}{\rho} \Delta T + \frac{\zeta}{\rho T} ,\\
@@ -318,7 +319,7 @@ The speed of the second sound \(u_2\) is related to these values by:
 \[u_2^2 = \frac{\chi_{s0}T_0s_0^2}{\chi_{n0}C}\]
 \subsection{Method}
 A spectral method discretizes functions by expanding them over a set of basis functions.
-Project Dedalus is a flexible framework for spectrally solving differential equations. We used tis framework to spectrally solve the equations of our model over periodic 2D space.
+Project Dedalus\cite{Dedalus} is a flexible framework for spectrally solving differential equations. We used tis framework to spectrally solve the equations of our model over periodic 2D space.
 
 We begin defining the domain of our problem, since we won't be imposing boundary conditions, our domain is defind with 2D cartesian coordinates over real forier basis.
 Next, we daine the fields for the variables of our problem \(\rho, s, \mathbf{v}, \mathbf{v_s}\) and the constans \(\chi', \chi_{n0}, \chi_{s0}, s_0, \rho_0, u_1, C \text{ and } T_0\).
@@ -327,10 +328,18 @@ Next we add the equations of the model ant set the initial conditions.
 Finally, we build our solver, iterate for a certain simultaion time and plot the results.
 
 \subsection{Simulations}
-In this first simulation we aim to observe the first and second sound and compare their velocities.
-We found that if we set the initial velocity to \(mathbf{v} = (e^{-10x^2}, 0)\) a density and an entropy gradient is generated at he \(x=0\) line. 
-As the simulation advances, we can clearly see how the density wave travels faster than the entropy wave.
 
+\subsubsection{Simulation 1}
+In this first simulation we aim to observe the first and second sound and compare their velocities.
+We found that if we set the initial velocity to \(\mathbf{v} = (e^{-10x^2}, 0)\) a density and an entropy gradient is generated at he \(x=0\) line. 
+In \ref{sim1} we can clearly see how,as the simulation advances, the density wave travels faster than the entropy wave.
+\begin{figure}
+    \includegraphics{Viscosity.png}
+    \caption{Snapshots from simulation 1}
+    \label{sim1}
+\end{figure}
+
+\subsection{Simulation 2}
 In the next two simulations we will explore what happens when we add a perturbation to the density or entropy field.
 If we set the initial density to \(\rho = \rho_0 + e^{-10x^2}\)
 
