@@ -32,7 +32,7 @@ Snapshots from the simulations are included in the paper's appendix, and the cor
 ```
 /                     # Root directory
 |-- Code/              # Source code for simulations
-|-- Videos/           # Video recordings of simulation results
+|-- Simulation X.mp4     # Video recordings of simulation results
 |-- Superfluids.pdf   # Research paper
 |-- README.md         # This document
 ```
