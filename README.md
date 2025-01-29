@@ -1,4 +1,5 @@
 # Superfluid Simulation
+![image](https://github.com/user-attachments/assets/54fb43a3-50d1-410d-8752-765b1c3a5ef6)
 
 ## Overview
 We make an introduction to the superfluidity phenomenon, focusing on the particular case
