@@ -1,66 +1,73 @@
-# Superfluid Simulation
-![image](https://github.com/user-attachments/assets/54fb43a3-50d1-410d-8752-765b1c3a5ef6)
+# Superfluid helium-II simulation
 
-## Overview
-We make an introduction to the superfluidity phenomenon, focusing on the particular case
-of helium-II, dealing with the basics of Bose-Einstein condensation for a better understanding.
-We comment and justify the unique properties of He-II, by performing our own simulation of
-the superfluid in which we observe some of these behaviors and drawing conclusions. 
+![Simulation snapshot](https://github.com/user-attachments/assets/54fb43a3-50d1-410d-8752-765b1c3a5ef6)
 
+Team project on superfluidity in helium-II. The [paper](paper/superfluids.pdf) introduces
+Bose-Einstein condensation and the two-fluid picture of He-II, and then tests some of its
+properties with our own 2D simulation of the superfluid, written with spectral methods in
+[Dedalus](https://dedalus-project.org/).
 
-This repository contains the code, videos, and paper associated with our research on the simulation of superfluid phenomena, particularly in helium-II. 
+## Model
 
-The project explores Bose-Einstein condensates, the two-fluid model, and key superfluid behaviors, using numerical simulations with spectral methods with Dedalus.
+We solve the two-fluid model of Kincl, Schmoranzer and Pavelka (Physics of Fluids 35, 047124, 2023)
+for the density $\rho$, specific entropy $s$, coflow velocity $\mathbf{v}$ and superfluid velocity
+$\mathbf{v}_s$:
 
-## Paper
+$$
+\begin{aligned}
+\frac{D\rho}{Dt} &= -\rho\,\nabla\cdot\mathbf{v}, \\
+\frac{Ds}{Dt} &= -\frac{1}{\rho}\nabla\cdot(\rho s \chi_s \mathbf{v}_{ns}) + \frac{\beta}{\rho}\Delta T + \frac{\zeta}{\rho T}, \\
+\frac{D\mathbf{v}}{Dt} &= -\frac{1}{\rho}\nabla\cdot(\rho\chi_n\chi_s\,\mathbf{v}_{ns}\otimes\mathbf{v}_{ns} + p I) + \frac{2\mu}{\rho}\nabla\cdot D_n, \\
+\frac{D\mathbf{v}_s}{Dt} &= \chi_n (\nabla\mathbf{v}_n)^T\mathbf{v}_{ns} - \frac{\nabla p}{\rho} + s\nabla T,
+\end{aligned}
+$$
 
-The full paper can be found [here](./Superfluids.pdf). It provides a theoretical background, derivations of the governing equations, and an analysis of the simulation results.
+with $\mathbf{v}_{ns} = \mathbf{v}_n - \mathbf{v}_s$ and $p$, $T$, $\chi_n$ linearised around
+$T_0 = 1.9$ K (section 5 of the paper). The domain is periodic in 2D, discretised with a real
+Fourier basis and integrated with a second-order Runge-Kutta scheme (RK222).
 
-## Simulations
+## Results
 
-The code simulates various superfluid phenomena, including:
+| Simulation | Initial condition | What we see | Video |
+|---|---|---|---|
+| 1. First and second sound | velocity pulse $v_x = e^{-10x^2}$ | density waves at ~40 m/s (first sound) and entropy waves at ~19 m/s, against the predicted 18.8 m/s for second sound | [mp4](media/videos/simulation_1_first_second_sound.mp4) |
+| 2. Peak in density | $\rho = \rho_0 + e^{-10x^2}$ | the density peak splits into two sound waves and creates entropy waves that travel at the speeds of first and second sound | [mp4](media/videos/simulation_2_density_peak.mp4) |
+| 3. Peak in entropy | $s = s_0 + e^{-10x^2}$ | two density waves: one follows second sound, one travels ahead at the speed of sound | [mp4](media/videos/simulation_3_entropy_peak.mp4) |
+| 4. Standing waves | $\mathbf{v} = (0.1\cos y, -0.1\cos x)$ | density and entropy oscillate at ~8.8 Hz and ~4 Hz, i.e. waves at 39 m/s and 17.7 m/s; the superfluid component stays irrotational | [mp4](media/videos/simulation_4_standing_waves.mp4) |
+| 5. Fountain effect | hot spot $s = s_0 + 100\,e^{-(x^2+y^2)}$ | superfluid flows towards the hot spot, raising pressure and density there | [mp4](media/videos/simulation_5_fountain_effect.mp4) |
 
-1. **First and Second Sound** - Demonstrates the propagation of density and entropy waves.
-2. **Peak in Density** - Examines how density perturbations influence entropy.
-3. **Peak in Entropy** - Studies the effects of entropy perturbations on density.
-4. **Standing Waves** - Shows the oscillatory behavior of density and entropy.
-5. **Fountain Effect** - Simulates the thermomechanical effect in superfluid helium.
+Snapshots of every run are in the appendix of the paper. Boundaries, superfluid creep and
+quantum vortices are outside the scope of this model (see the conclusion of the paper).
 
-Snapshots from the simulations are included in the paper's appendix, and the corresponding videos can be found in this repository.
+## Running it
 
-## Code Structure
+Dedalus is easiest to install with conda (see the
+[installation guide](https://dedalus-project.readthedocs.io/en/latest/pages/installation.html)):
 
 ```
-/                     # Root directory
-|-- Code/              # Source code for simulations
-|-- Simulation X.mp4     # Video recordings of simulation results
-|-- Superfluids.pdf   # Research paper
-|-- README.md         # This document
+conda create -n superfluids -c conda-forge dedalus matplotlib
+conda activate superfluids
+python src/superfluid_2d.py
 ```
 
-## Requirements
+`src/superfluid_2d.py` runs the full model and animates the density, entropy, pressure,
+temperature and velocity fields. The initial conditions are set in the `#Initial value` block;
+the commented lines there are the ones we used for other runs. To save frames, uncomment the
+`savefig` line in `update`.
 
-To run the simulations, you need:
+## Repository layout
 
-- **Dedalus framework** for spectral simulations (Python-based).
-- Python and basic libraries.
+```
+paper/superfluids.pdf   paper (theory, derivations, results)
+src/superfluid_2d.py    two-fluid He-II solver
+src/prototypes/         earlier steps: heat equation, 1D Euler, 2D (compressible)
+                        Navier-Stokes, first version of the solver, a C++ attempt
+media/videos/           videos of the simulations
+media/snapshots/        frames from two runs
+```
 
-### Installation
+## Authors
 
-To install the latest version of Dedalus Project, we refer you to the [official website](https://dedalus-project.org/).
+Eloi Estèvez, Eki González, Joan Pascual and Timothy Skipper (January 2025).
 
-
-### Results
-The generated data can be visualized using Python scripts included in the repository. You can also see the conclusions with the uploaded videos. Feel free to experiment with the initial conditions of the superfluid.
-
-## Contributors
-
-- Eloi Estèvez
-- Eki González
-- Joan Pascual
-- Timothy Skipper
-
-## References
-
-For a detailed list of references, see the bibliography in the [paper](./Superfluids.pdf).
-
+Thanks to Ondřej Kincl (University of Trento) for helping us understand his paper.
